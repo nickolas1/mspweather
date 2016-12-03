@@ -3,6 +3,7 @@ let controller = {
     res.render('index');
   },
   getTemplate: (req, res) => {
+    console.log(req.params)
     res.render('templates/' + req.params.template);
   }
 }
