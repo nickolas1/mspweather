@@ -1,0 +1,75 @@
+high-low-distribution {
+  h3 {
+    background: $color-1;
+    font-family: monospace;
+    margin: 0;
+    padding: 5px 0 0 10px;
+    color: $color-1-ll;
+  }
+
+  .plot-background {
+    fill: $color-1;
+  }
+
+  .line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 2.5px;
+  }
+
+  .high {
+    stroke-width: 1.5px;
+    stroke: $color-1-ll;
+  }
+
+  .low {
+    stroke-width: 1.5px;
+    stroke: $color-1-dd;
+  }
+
+  .dot-high {
+    stroke: $color-1-ll;
+    fill: $color-1-ll;
+  }
+
+  .dot-low {
+    stroke: $color-1-dd;
+    fill: $color-1-dd;
+  }
+
+  .kde-high {
+    stroke: $color-1-l;
+  }
+
+  .kde-low {
+    stroke: $color-1-d;
+  }
+
+  .text-high-main, {
+    font-family: monospace;
+    font-size: 30px;
+    fill: $color-1-ll;
+    stroke: none;
+  }
+
+  .text-low-main {
+    font-family: monospace;
+    font-size: 30px;
+    fill: $color-1-dd;
+    stroke: none;
+  }
+
+  .text-high-sub, {
+    font-family: monospace;
+    font-size: 15px;
+    fill: $color-1-l;
+    stroke: none;
+  }
+
+  .text-low-sub {
+    font-family: monospace;
+    font-size: 15px;
+    fill: $color-1-d;
+    stroke: none;
+  }
+}

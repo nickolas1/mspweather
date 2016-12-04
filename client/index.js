@@ -1,4 +1,5 @@
 require('bootstrap/dist/css/bootstrap.min.css');
+require('./js/style.min.css');
 
 // Import modules without parsing with script-loader,
 // !! to override all loaders

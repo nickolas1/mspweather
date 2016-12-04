@@ -1,23 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, OnInit }            from '@angular/core';
+import { ObservationService }   from '../observation.service';
+
 
 @Component({
     selector: 'day-context',
     template: `
-      <day-picker
-        (onDateSelected)='onDateSelected($event)'></day-picker>
-      <high-low-distribution
-        [observation]='observation'></high-low-distribution>
-      <precipitation
-        [observation]='observation'></precipitation>
-      <winter-weather
-        [observation]='observation'></winter-weather>
-    `
+      <div class='row'>
+        <day-picker
+          (onDateSelected)='onDateSelected($event)'></day-picker>
+      </div>
+      <div class='row'>
+        <high-low-distribution class='col-sm-6 col-no-pad'
+          [observation]='observation'
+          [historical]='historical'></high-low-distribution>
+        <precipitation class='col-sm-6 col-no-pad'
+          [observation]='observation'></precipitation>
+      </div>
+      <div class='row'>
+        <winter-weather class='col-sm-6 col-no-pad'
+          [observation]='observation'></winter-weather>
+      </div>
+    `,
+    providers:[ObservationService]
 })
 
 export class DayContextComponent {
-  observation = 'hi';
+  observation = {};
+  historical = {};
+
+  constructor(observationService:ObservationService) {
+    this.observationService = observationService;
+  }
+
+  ngOnInit() {
+    this.onDateSelected(new Date(Date.UTC(2009, 2, 3)));
+  }
+
+  // onDateSelected(date) {
+  //   console.log('day context hears ', date);
+  //   this.getObservation(date);
+  // }
+  //
+  // getObservation(date) {
   onDateSelected(date) {
     console.log('day context hears ', date);
-    this.observation = date;
+    this.observation = this.observationService.getSingleObservation(date)
+                                              .then(resp => this.observation = resp);
+    this.historical = this.observationService.getManyObservations(date)
+                                             .then(resp => this.historical = resp);
   }
 }

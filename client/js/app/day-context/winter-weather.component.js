@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'winter-weather',
     template: `
-      <p>winter weather</p>
+      <p>winter weather: {{observation.snowfall}}</p>
     `
 })
 

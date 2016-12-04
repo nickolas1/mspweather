@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'precipitation',
     template: `
-      <p>precipitation</p>
+      <p>precipitation: {{observation.precip}}</p>
     `
 })
 

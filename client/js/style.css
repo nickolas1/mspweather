@@ -1,0 +1,64 @@
+.col-no-pad {
+  padding-left: 0;
+  padding-right: 0; }
+
+high-low-distribution h3 {
+  background: #AA7C39;
+  font-family: monospace;
+  margin: 0;
+  padding: 5px 0 0 10px;
+  color: #FFEBCE; }
+
+high-low-distribution .plot-background {
+  fill: #AA7C39; }
+
+high-low-distribution .line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2.5px; }
+
+high-low-distribution .high {
+  stroke-width: 1.5px;
+  stroke: #FFEBCE; }
+
+high-low-distribution .low {
+  stroke-width: 1.5px;
+  stroke: #231500; }
+
+high-low-distribution .dot-high {
+  stroke: #FFEBCE;
+  fill: #FFEBCE; }
+
+high-low-distribution .dot-low {
+  stroke: #231500;
+  fill: #231500; }
+
+high-low-distribution .kde-high {
+  stroke: #EDC487; }
+
+high-low-distribution .kde-low {
+  stroke: #67410A; }
+
+high-low-distribution .text-high-main {
+  font-family: monospace;
+  font-size: 30px;
+  fill: #FFEBCE;
+  stroke: none; }
+
+high-low-distribution .text-low-main {
+  font-family: monospace;
+  font-size: 30px;
+  fill: #231500;
+  stroke: none; }
+
+high-low-distribution .text-high-sub {
+  font-family: monospace;
+  font-size: 15px;
+  fill: #EDC487;
+  stroke: none; }
+
+high-low-distribution .text-low-sub {
+  font-family: monospace;
+  font-size: 15px;
+  fill: #67410A;
+  stroke: none; }

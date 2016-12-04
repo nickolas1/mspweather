@@ -1,0 +1,30 @@
+$color-1: #AA7C39;	// Main Primary color */
+$color-1-ll: #FFEBCE;
+$color-1-l: #EDC487;
+$color-1-d: #67410A;
+$color-1-dd: #231500;
+
+$color-2: #333577;	// Main Secondary color (1) */
+$color-2-ll: #BBBCDF;
+$color-2-l: #696AA6;
+$color-2-d: #101248;
+$color-2-dd: #020318;
+
+$color-3: #256F5C;	// Main Secondary color (2) */
+$color-3-ll: #B0DAD0;
+$color-3-l: #589A8A;
+$color-3-d: #064334;
+$color-3-dd: #001711;
+
+$color-4: #2A4D6E;	// Main Complement color */
+$color-4-ll: #B3C7DA;
+$color-4-l: #5D7C9A;
+$color-4-d: #0B2743;
+$color-4-dd: #010C17;
+
+.col-no-pad {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@import './app/day-context/_day-context.scss';
