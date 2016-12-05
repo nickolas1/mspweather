@@ -5,6 +5,10 @@
     padding: 5px 0 0 10px;
     color: $lightest;
   }
+  
+  svg {
+    display: block;
+  }
 
   .plot-background {
     fill: $main;

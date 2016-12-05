@@ -5,6 +5,10 @@ high-low-distribution {
     padding: 5px 0 0 10px;
     color: $color-1-ll;
   }
+  
+  svg {
+    display: block;
+  }
 
   .plot-background {
     fill: $color-1;

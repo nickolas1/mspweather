@@ -10,18 +10,18 @@ import { ObservationService }   from '../observation.service';
           (onDateSelected)='onDateSelected($event)'></day-picker>
       </div>
       <div class='row'>
-        <high-low-distribution class='col-sm-6 col-no-pad'
+        <high-low-distribution class='col-sm-6'
           [observation]='observation'
           [historical]='historical'></high-low-distribution>
-        <precipitation class='col-sm-6 col-no-pad'
+        <precipitation class='col-sm-6'
           [observation]='observation'
           [historical]='historical'></precipitation>
       </div>
       <div class='row'>
-        <snowfall class='col-sm-6 col-no-pad'
+        <snowfall class='col-sm-6'
           [observation]='observation'
           [historical]='historical'></snowfall>
-        <snowdepth class='col-sm-6 col-no-pad'
+        <snowdepth class='col-sm-6'
           [observation]='observation'
           [historical]='historical'></snowdepth>
       </div>

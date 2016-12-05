@@ -47,15 +47,15 @@ export class HighLowDistributionComponent {
       this.clearPlot();
       // set up plot svg elements
       d3ParentElement = d3.select(this.parentNativeElement);
-      const margin = {top: 10, bottom: 30, left: 30, right: 10};
+      const margin = {top: 10, bottom: 30, left: 20, right: 20};
       const width = d3ParentElement._groups[0][0].clientWidth - margin.left - margin.right;
-      const height = d3ParentElement._groups[0][0].clientWidth * 0.7 - margin.top - margin.bottom;
+      const height = d3ParentElement._groups[0][0].clientWidth * 0.6 - margin.top - margin.bottom;
       this.svg = d3ParentElement.select('svg')
           .attr('width', width + margin.left + margin.right)
-          .attr('height', height + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
       this.svg.append('rect')
           .attr('width', width + margin.left + margin.right)
-          .attr('height', height + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
           .attr('class', 'plot-background');
       svg = this.svg.append('g')
           .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
@@ -63,8 +63,8 @@ export class HighLowDistributionComponent {
       // construct scales and axes
       const minX = d3.min([+this.observation.low, d3.min(this.historical.lows)]);
       const maxX = d3.max([+this.observation.high, d3.max(this.historical.highs)]);
-      const minHigh = d3.min(this.historical.highs);
-      const maxLow = d3.max(this.historical.lows);
+      const minHigh = d3.min(this.historical.highs.concat(+this.observation.high));
+      const maxLow = d3.max(this.historical.lows.concat(+this.observation.low));
       const domainPad = (maxX - minX) * 0.15;
       const x = d3.scaleLinear()
         .range([0, width])
@@ -142,7 +142,7 @@ export class HighLowDistributionComponent {
           .attr('dx', '10px')
           .attr('dy', '15px')
           .attr('class','text-high-sub')
-          .text(ordinalize(100 * idxH / distH.length) + ' %');
+          .text(ordinalize(100 * d3.bisect(this.historical.highs.sort(), this.observation.high) / this.historical.highs.length) + ' %');
       svg.append('text')
           .attr('x', x(lowLine[1][0]))
           .attr('y', y(lowLine[1][1]))
@@ -150,7 +150,7 @@ export class HighLowDistributionComponent {
           .attr('dx', '-10px')
           .attr('dy', '15px')
           .attr('class','text-low-sub')
-          .text(ordinalize(100 * idxL / distL.length) + ' %');
+          .text(ordinalize(100 * d3.bisect(this.historical.lows.sort(), this.observation.low) / this.historical.lows.length) + ' %');
       svg.append('text')
           .attr('x', x(minX))
           .attr('y', y(0))
@@ -176,7 +176,6 @@ export class HighLowDistributionComponent {
 
     function ordinalize(n) {
       let ni = Math.round(n);
-      console.log(n, ni, ni + ordinalSuffixOf(ni))
       return ni + ordinalSuffixOf(ni);
     }
 

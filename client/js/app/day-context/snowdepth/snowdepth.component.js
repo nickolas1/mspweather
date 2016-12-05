@@ -45,23 +45,23 @@ export class SnowdepthComponent {
     // TODO be clever about label positions and plot margins etc.
     if (this.parentNativeElement !== null && this.observation.date && this.historical.highs) {
       const obsField = this.observation.snowdepth;
-      const histField = this.historical.snowdepth;
+      const histField = this.historical.snowdepth.sort();
 
-      const obs = obsField === 'T' ? 0.001 : +obsField
+      const obs = obsField === 'T' ? 0.01 : +obsField
       const obsText = obsField === 'T' ? 'trace' : obs + '"';
 
       this.clearPlot();
       // set up plot svg elements
       d3ParentElement = d3.select(this.parentNativeElement);
-      const margin = {top: 10, bottom: 30, left: 30, right: 10};
+      const margin = {top: 10, bottom: 30, left: 20, right: 20};
       const width = d3ParentElement._groups[0][0].clientWidth - margin.left - margin.right;
-      const height = d3ParentElement._groups[0][0].clientWidth * 0.7 - margin.top - margin.bottom;
+      const height = d3ParentElement._groups[0][0].clientWidth * 0.6 - margin.top - margin.bottom;
       this.svg = d3ParentElement.select('svg')
           .attr('width', width + margin.left + margin.right)
-          .attr('height', height + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
       this.svg.append('rect')
           .attr('width', width + margin.left + margin.right)
-          .attr('height', height + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
           .attr('class', 'plot-background');
       svg = this.svg.append('g')
           .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
@@ -120,7 +120,7 @@ export class SnowdepthComponent {
           .attr('dx', '10px')
           .attr('dy', '17px')
           .attr('class','text-sub')
-          .text(ordinalize(100 * idx / dist.length) + ' %');
+          .text(ordinalize(100 * d3.bisect(histField, obs) / histField.length) + ' %');
       svg.append('text')
           .attr('x', x(minX))
           .attr('y', y(0))
@@ -146,7 +146,6 @@ export class SnowdepthComponent {
 
     function ordinalize(n) {
       let ni = Math.round(n);
-      console.log(n, ni, ni + ordinalSuffixOf(ni))
       return ni + ordinalSuffixOf(ni);
     }
 

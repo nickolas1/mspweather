@@ -8,7 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 
 export class DayPickerComponent {
-  date = new Date(Date.UTC(1980, 0, 11));
+  date = new Date(Date.UTC(1984, 11, 25));
   @Output() onDateSelected = new EventEmitter();
 
   selectDate(date) {

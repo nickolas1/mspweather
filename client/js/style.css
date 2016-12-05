@@ -4906,6 +4906,9 @@ high-low-distribution h3 {
   padding: 5px 0 0 10px;
   color: #FFEBCE; }
 
+high-low-distribution svg {
+  display: block; }
+
 high-low-distribution .plot-background {
   fill: #AA7C39; }
 
@@ -4961,6 +4964,9 @@ precipitation h3 {
   padding: 5px 0 0 10px;
   color: #B0DAD0; }
 
+precipitation svg {
+  display: block; }
+
 precipitation .plot-background {
   fill: #256F5C; }
 
@@ -4995,6 +5001,9 @@ snowfall h3 {
   padding: 5px 0 0 10px;
   color: #B3C7DA; }
 
+snowfall svg {
+  display: block; }
+
 snowfall .plot-background {
   fill: #2A4D6E; }
 
@@ -5028,6 +5037,9 @@ snowdepth h3 {
   margin: 0;
   padding: 5px 0 0 10px;
   color: #BBBCDF; }
+
+snowdepth svg {
+  display: block; }
 
 snowdepth .plot-background {
   fill: #333577; }
