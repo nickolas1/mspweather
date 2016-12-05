@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
 $color-1: #AA7C39;	// Main Primary color */
 $color-1-ll: #FFEBCE;
 $color-1-l: #EDC487;
@@ -21,6 +23,8 @@ $color-4-ll: #B3C7DA;
 $color-4-l: #5D7C9A;
 $color-4-d: #0B2743;
 $color-4-dd: #010C17;
+
+$font-stack: 'Source Code Pro', monospace;
 
 .col-no-pad {
   padding-left: 0;

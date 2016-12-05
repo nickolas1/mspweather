@@ -13,6 +13,5 @@ require('!!script!@angular/compiler/bundles/compiler.umd.js');
 require('!!script!@angular/platform-browser/bundles/platform-browser.umd.js');
 require('!!script!@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js');
 
-
 // Import boot, resolve imports/requires, and pass through Babel
 require('./js/main');

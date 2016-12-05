@@ -2,15 +2,15 @@ import { Component, Input, OnInit, OnChanges, OnDestroy, ElementRef } from '@ang
 import { D3Service, D3, Selection, ScaleLinear } from 'd3-ng2-service';
 
 @Component({
-    selector: 'high-low-distribution',
+    selector: 'snowdepth',
     template: `
-      <h3>-high and low temp-</h3>
+      <h3>-snow depth-</h3>
       <svg></svg>
     `
 })
 
 
-export class HighLowDistributionComponent {
+export class SnowdepthComponent {
   @Input() observation = '';
   @Input() historical = '';
 
@@ -44,6 +44,12 @@ export class HighLowDistributionComponent {
 
     // TODO be clever about label positions and plot margins etc.
     if (this.parentNativeElement !== null && this.observation.date && this.historical.highs) {
+      const obsField = this.observation.snowdepth;
+      const histField = this.historical.snowdepth;
+
+      const obs = obsField === 'T' ? 0.001 : +obsField
+      const obsText = obsField === 'T' ? 'trace' : obs + '"';
+
       this.clearPlot();
       // set up plot svg elements
       d3ParentElement = d3.select(this.parentNativeElement);
@@ -61,10 +67,10 @@ export class HighLowDistributionComponent {
           .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
       // construct scales and axes
-      const minX = d3.min([+this.observation.low, d3.min(this.historical.lows)]);
-      const maxX = d3.max([+this.observation.high, d3.max(this.historical.highs)]);
-      const minHigh = d3.min(this.historical.highs);
-      const maxLow = d3.max(this.historical.lows);
+      const minX = d3.min([obs, d3.min(histField)]);
+      const maxX = d3.max([obs, d3.max(histField)]);
+      const minVal = d3.min(histField);
+      const maxVal = d3.max(histField);
       const domainPad = (maxX - minX) * 0.15;
       const x = d3.scaleLinear()
         .range([0, width])
@@ -75,95 +81,59 @@ export class HighLowDistributionComponent {
         .x(d => x(d[0]))
         .y(d => y(d[1]));
       // setup kernel density estimator
-      const bandwidthH = 1.06 * d3.deviation(this.historical.highs) / Math.pow(this.historical.highs.length, 0.2);
-      const bandwidthL = 1.06 * d3.deviation(this.historical.lows) / Math.pow(this.historical.lows.length, 0.2);
-      const kdeH = kernelDensityEstimator(epanechnikovKernel(bandwidthH), x.ticks(200));
-      const kdeL = kernelDensityEstimator(epanechnikovKernel(bandwidthL), x.ticks(200));
-      const distH = kdeH(this.historical.highs).filter(d => d[0] >= minHigh && d[0] <= maxX);
-      const distL = kdeL(this.historical.lows).filter(d => d[0] <= maxLow && d[0] >= minX);;
-      const maxY = d3.max([d3.max(distH.map(x => x[1])), d3.max(distL.map(x => x[1]))]);
+      const bandwidth = 1.06 * d3.deviation(histField) / Math.pow(histField.length, 0.2);
+      const kde = kernelDensityEstimator(epanechnikovKernel(bandwidth), x.ticks(200));
+      const dist = kde(histField).filter(d => d[0] >= minX && d[0] <= maxX);
+      const maxY = d3.max(dist.map(x => x[1]));
       const rangePad = maxY * 0.2;
       y.domain([0, maxY + rangePad]);
 
       svg.append('path')
-          .datum(distH)
-          .attr('class', 'line kde-high')
-          .attr('d', line);
-      svg.append('path')
-          .datum(distL)
-          .attr('class', 'line kde-low')
+          .datum(dist)
+          .attr('class', 'line kde')
           .attr('d', line);
 
       const bisector = d3.bisector(d => d[0]).left;
-      const idxH = bisector(distH, +this.observation.high);
-      const idxL = bisector(distL, +this.observation.low);
-      const highLine = [
-        [+this.observation.high, distH[idxH][1]],
-        [+this.observation.high, maxY + rangePad / 2]
-      ];
-      const lowLine = [
-        [+this.observation.low, distL[idxL][1]],
-        [+this.observation.low, maxY + rangePad / 2]
+      const idx = bisector(dist, obs);
+      const obsLine = [
+        [obs, dist[idx][1]],
+        [obs, maxY + rangePad / 2]
       ];
       svg.append('path')
-          .datum(highLine)
-          .attr('class', 'line high')
-          .attr('d', line);
-      svg.append('path')
-          .datum(lowLine)
-          .attr('class', 'line low')
+          .datum(obsLine)
+          .attr('class', 'line observation')
           .attr('d', line);
       svg.append('circle')
-          .attr('cx', x(highLine[0][0]))
-          .attr('cy', y(highLine[0][1]))
+          .attr('cx', x(obsLine[0][0]))
+          .attr('cy', y(obsLine[0][1]))
           .attr('r', '5px')
-          .attr('class', 'dot-high');
-      svg.append('circle')
-          .attr('cx', x(lowLine[0][0]))
-          .attr('cy', y(lowLine[0][1]))
-          .attr('r', '5px')
-          .attr('class', 'dot-low');
+          .attr('class', 'dot');
       svg.append('text')
-          .attr('x', x(highLine[1][0]))
-          .attr('y', y(highLine[1][1]))
+          .attr('x', x(obsLine[1][0]))
+          .attr('y', y(obsLine[1][1]))
           //.attr('dx', '10px')
-          .attr('class','text-high-main')
-          .text(this.observation.high + '\u00B0F');
+          .attr('class','text-main')
+          .text(obsText);
       svg.append('text')
-          .attr('x', x(lowLine[1][0]))
-          .attr('y', y(lowLine[1][1]))
-          .attr('text-anchor', 'end')
-          //.attr('dx', '-10px')
-          .attr('class','text-low-main')
-          .text(this.observation.low + '\u00B0F');
-      svg.append('text')
-          .attr('x', x(highLine[1][0]))
-          .attr('y', y(highLine[1][1]))
+          .attr('x', x(obsLine[1][0]))
+          .attr('y', y(obsLine[1][1]))
           .attr('dx', '10px')
-          .attr('dy', '15px')
-          .attr('class','text-high-sub')
-          .text(ordinalize(100 * idxH / distH.length) + ' %');
-      svg.append('text')
-          .attr('x', x(lowLine[1][0]))
-          .attr('y', y(lowLine[1][1]))
-          .attr('text-anchor', 'end')
-          .attr('dx', '-10px')
-          .attr('dy', '15px')
-          .attr('class','text-low-sub')
-          .text(ordinalize(100 * idxL / distL.length) + ' %');
+          .attr('dy', '17px')
+          .attr('class','text-sub')
+          .text(ordinalize(100 * idx / dist.length) + ' %');
       svg.append('text')
           .attr('x', x(minX))
           .attr('y', y(0))
           .attr('text-anchor', 'end')
-          .attr('dy', '15px')
-          .attr('class','text-low-sub')
-          .text(minX + '\u00B0F');
+          .attr('dy', '17px')
+          .attr('class','text-sub')
+          .text(minX + '"');
       svg.append('text')
           .attr('x', x(maxX))
           .attr('y', y(0))
-          .attr('dy', '15px')
-          .attr('class','text-high-sub')
-          .text(maxX + '\u00B0F');
+          .attr('dy', '17px')
+          .attr('class','text-sub')
+          .text(maxX + '"');
     }
 
     function kernelDensityEstimator(kernel, x) {

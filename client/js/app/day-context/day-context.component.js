@@ -14,11 +14,16 @@ import { ObservationService }   from '../observation.service';
           [observation]='observation'
           [historical]='historical'></high-low-distribution>
         <precipitation class='col-sm-6 col-no-pad'
-          [observation]='observation'></precipitation>
+          [observation]='observation'
+          [historical]='historical'></precipitation>
       </div>
       <div class='row'>
-        <winter-weather class='col-sm-6 col-no-pad'
-          [observation]='observation'></winter-weather>
+        <snowfall class='col-sm-6 col-no-pad'
+          [observation]='observation'
+          [historical]='historical'></snowfall>
+        <snowdepth class='col-sm-6 col-no-pad'
+          [observation]='observation'
+          [historical]='historical'></snowdepth>
       </div>
     `,
     providers:[ObservationService]

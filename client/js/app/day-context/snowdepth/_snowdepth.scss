@@ -1,0 +1,51 @@
+$main: $color-2;
+$lighter: $color-2-l;
+$lightest: $color-2-ll;
+$darker: $color-2-d;
+$darkest: $color-2-dd;
+
+snowdepth {
+  font-family: $font-stack;
+
+  h3 {
+    background: $main;
+    margin: 0;
+    padding: 5px 0 0 10px;
+    color: $lightest;
+  }
+
+  .plot-background {
+    fill: $main;
+  }
+
+  .line {
+    fill: none;
+    stroke-width: 3.5px;
+  }
+
+  .observation {
+    stroke-width: 1.5px;
+    stroke: $lightest;
+  }
+
+  .dot {
+    stroke: $lightest;
+    fill: $lightest;
+  }
+
+  .kde {
+    stroke: $lighter;
+  }
+
+  .text-main, {
+    font-size: 30px;
+    fill: $lightest;
+    stroke: none;
+  }
+
+  .text-sub, {
+    font-size: 15px;
+    fill: $lighter;
+    stroke: none;
+  }
+}
