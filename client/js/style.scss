@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+//@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import './_variables'; //bootstrap overrides
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 $color-1: #AA7C39;	// Main Primary color */
 $color-1-ll: #FFEBCE;
@@ -24,11 +26,5 @@ $color-4-l: #5D7C9A;
 $color-4-d: #0B2743;
 $color-4-dd: #010C17;
 
-$font-stack: 'Source Code Pro', monospace;
-
-.col-no-pad {
-  padding-left: 0;
-  padding-right: 0;
-}
 
 @import './app/day-context/_day-context.scss';

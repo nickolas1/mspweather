@@ -5,47 +5,5 @@ $darker: $color-3-d;
 $darkest: $color-3-dd;
 
 precipitation {
-  font-family: $font-stack;
-
-  h3 {
-    background: $main;
-    margin: 0;
-    padding: 5px 0 0 10px;
-    color: $lightest;
-  }
-
-  .plot-background {
-    fill: $main;
-  }
-
-  .line {
-    fill: none;
-    stroke-width: 3.5px;
-  }
-
-  .observation {
-    stroke-width: 1.5px;
-    stroke: $lightest;
-  }
-
-  .dot {
-    stroke: $lightest;
-    fill: $lightest;
-  }
-
-  .kde {
-    stroke: $lighter;
-  }
-
-  .text-main, {
-    font-size: 30px;
-    fill: $lightest;
-    stroke: none;
-  }
-
-  .text-sub, {
-    font-size: 15px;
-    fill: $lighter;
-    stroke: none;
-  }
+  @include plot-base-style($lightest, $lighter, $main, $darker, $darkest);
 }
