@@ -1,9 +1,0 @@
-$main: $color-4;
-$lighter: $color-4-l;
-$lightest: $color-4-ll;
-$darker: $color-4-d;
-$darkest: $color-4-dd;
-
-snowfall {
-    @include plot-base-style($lightest, $lighter, $main, $darker, $darkest);
-}

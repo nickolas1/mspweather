@@ -2,17 +2,19 @@ import { Component, Input, OnInit, OnChanges, OnDestroy, ElementRef } from '@ang
 import { D3Service, D3, Selection, ScaleLinear } from 'd3-ng2-service';
 
 @Component({
-    selector: 'snowdepth',
+    selector: 'inches-plot',
     template: `
-      <h3>-snow depth-</h3>
+      <h4>-{{title}}-</h4>
       <svg></svg>
     `
 })
 
 
-export class SnowdepthComponent {
-  @Input() observation = '';
-  @Input() historical = '';
+export class InchesPlotComponent {
+  @Input() observation = undefined;
+  @Input() historical = undefined;
+  @Input() title = '';
+  @Input() traceReplacement = '';
 
   d3 = undefined;
   parentNativeElement = undefined;
@@ -43,17 +45,16 @@ export class SnowdepthComponent {
     // TODO maybe check if observation is ZoneAwarePromise and show loading
 
     // TODO be clever about label positions and plot margins etc.
-    if (this.parentNativeElement !== null && this.observation.date && this.historical.highs) {
-      const obsField = this.observation.snowdepth;
-      const histField = this.historical.snowdepth.sort();
-
-      const obs = obsField === 'T' ? 0.01 : +obsField
-      const obsText = obsField === 'T' ? 'trace' : obs + '"';
+    if (this.parentNativeElement !== null && this.observation && this.historical) {
+      console.log(this)
+      const hist = this.historical.sort((a, b)=> a - b);
+      const obs = this.observation=== 'T' ? this.traceReplacement : +this.observation
+      const obsText = this.observation === 'T' ? 'trace' : obs + '"';
 
       this.clearPlot();
       // set up plot svg elements
       d3ParentElement = d3.select(this.parentNativeElement);
-      const margin = {top: 10, bottom: 30, left: 20, right: 20};
+      const margin = {top: 15, bottom: 30, left: 20, right: 20};
       const width = d3ParentElement._groups[0][0].clientWidth - margin.left - margin.right;
       const height = d3ParentElement._groups[0][0].clientWidth * 0.6 - margin.top - margin.bottom;
       this.svg = d3ParentElement.select('svg')
@@ -67,10 +68,8 @@ export class SnowdepthComponent {
           .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
       // construct scales and axes
-      const minX = d3.min([obs, d3.min(histField)]);
-      const maxX = d3.max([obs, d3.max(histField)]);
-      const minVal = d3.min(histField);
-      const maxVal = d3.max(histField);
+      const minX = d3.min(hist);
+      const maxX = d3.max(hist);
       const domainPad = (maxX - minX) * 0.15;
       const x = d3.scaleLinear()
         .range([0, width])
@@ -81,9 +80,9 @@ export class SnowdepthComponent {
         .x(d => x(d[0]))
         .y(d => y(d[1]));
       // setup kernel density estimator
-      const bandwidth = 1.06 * d3.deviation(histField) / Math.pow(histField.length, 0.2);
+      const bandwidth = 1.06 * d3.deviation(hist) / Math.pow(hist.length, 0.2);
       const kde = kernelDensityEstimator(epanechnikovKernel(bandwidth), x.ticks(200));
-      const dist = kde(histField).filter(d => d[0] >= minX && d[0] <= maxX);
+      const dist = kde(hist).filter(d => d[0] >= minX && d[0] <= maxX);
       const maxY = d3.max(dist.map(x => x[1]));
       const rangePad = maxY * 0.2;
       y.domain([0, maxY + rangePad]);
@@ -120,7 +119,7 @@ export class SnowdepthComponent {
           .attr('dx', '10px')
           .attr('dy', '17px')
           .attr('class','text-sub')
-          .text(ordinalize(100 * d3.bisect(histField, obs) / histField.length) + ' %');
+          .text(ordinalize(100 * d3.bisect(hist, obs) / hist.length) + ' %');
       svg.append('text')
           .attr('x', x(minX))
           .attr('y', y(0))

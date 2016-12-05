@@ -1,6 +1,6 @@
 
-@import './_plot-base-style';
-@import './high-low-distribution/_high-low-distribution.scss';
-@import './precipitation/_precipitation.scss';
-@import './snowfall/_snowfall.scss';
-@import './snowdepth/_snowdepth.scss';
+@import './inches-plot/_inches-plot';
+@import './high-low-distribution/_high-low-distribution';
+@import './_precipitation';
+@import './_snowfall';
+@import './_snowdepth';

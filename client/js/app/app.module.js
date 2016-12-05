@@ -13,6 +13,7 @@ import { PrecipitationComponent }         from './day-context/precipitation/prec
 import { SnowfallComponent }              from './day-context/snowfall/snowfall.component';
 import { SnowdepthComponent }             from './day-context/snowdepth/snowdepth.component';
 import { DayPickerComponent }             from './day-context/day-picker.component';
+import { InchesPlotComponent }             from './day-context/inches-plot/inches-plot.component';
 
 import { ObservationService }             from './observation.service';
 
@@ -29,7 +30,8 @@ import { ObservationService }             from './observation.service';
       PrecipitationComponent,
       SnowfallComponent,
       SnowdepthComponent,
-      DayPickerComponent
+      DayPickerComponent,
+      InchesPlotComponent
     ],
     providers: [
       ObservationService,

@@ -7,7 +7,7 @@ const MANY_OBSERVATIONS_URL_BASE = '/observations';
 
 function getMDYFromDate(date) {
   let y = date.getUTCFullYear();
-  let m = date.getUTCMonth();
+  let m = date.getUTCMonth() + 1; // getUTCMonth returns 0 based month
   let d = date.getUTCDate();
   return {year: y, month: m, day: d};
 }
@@ -33,7 +33,7 @@ export class ObservationService {
 
   getManyObservations(date) {
     let ymd = getMDYFromDate(date);
-    let url = MANY_OBSERVATIONS_URL_BASE + '/' + (ymd.month + 1) + '/' + ymd.day; //ymd.month is 0 based
+    let url = MANY_OBSERVATIONS_URL_BASE + '/' + ymd.month + '/' + ymd.day;
     return this.genericGet(url);
   }
 }

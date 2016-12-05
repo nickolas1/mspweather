@@ -1,0 +1,9 @@
+.snowdepth {
+  $main: $color-2;
+  $lighter: $color-2-l;
+  $lightest: $color-2-ll;
+  $darker: $color-2-d;
+  $darkest: $color-2-dd;
+  
+  @include plot-base-style($lightest, $lighter, $main, $darker, $darkest);
+}

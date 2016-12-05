@@ -1,11 +1,11 @@
 @mixin plot-base-style($lightest, $lighter, $main, $darker, $darkest) {
-  h3 {
-    background: $main;
+  h4 {
+    background: $lighter;
     margin: 0;
-    padding: 5px 0 0 10px;
-    color: $lightest;
+    padding: 5px 0 5px 10px;
+    color: $darkest;
   }
-  
+
   svg {
     display: block;
   }

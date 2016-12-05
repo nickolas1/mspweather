@@ -1,73 +1,61 @@
 high-low-distribution {
-  h3 {
-    background: $color-1;
-    margin: 0;
-    padding: 5px 0 0 10px;
-    color: $color-1-ll;
-  }
-  
-  svg {
-    display: block;
-  }
+  $main: $color-1;
+  $lighter: $color-1-l;
+  $lightest: $color-1-ll;
+  $darker: $color-1-d;
+  $darkest: $color-1-dd;
 
-  .plot-background {
-    fill: $color-1;
-  }
-
-  .line {
-    fill: none;
-    stroke-width: 3.5px;
-  }
+  @include plot-base-style($lightest, $lighter, $main, $darker, $darkest);
 
   .high {
     stroke-width: 1.5px;
-    stroke: $color-1-ll;
+    stroke: $lightest;
   }
 
   .low {
     stroke-width: 1.5px;
-    stroke: $color-1-dd;
+    stroke: $darkest;
   }
 
   .dot-high {
-    stroke: $color-1-ll;
-    fill: $color-1-ll;
+    stroke: $lightest;
+    fill: $lightest;
   }
 
   .dot-low {
-    stroke: $color-1-dd;
-    fill: $color-1-dd;
+    stroke: $darkest;
+    fill: $darkest;
   }
 
   .kde-high {
-    stroke: $color-1-l;
+    stroke: $lighter;
   }
 
   .kde-low {
-    stroke: $color-1-d;
+    stroke: $darker;
   }
 
   .text-high-main, {
     font-size: 30px;
-    fill: $color-1-ll;
+    fill: $lightest;
     stroke: none;
   }
 
   .text-low-main {
     font-size: 30px;
-    fill: $color-1-dd;
+    fill: $darkest;
     stroke: none;
   }
 
   .text-high-sub, {
     font-size: 15px;
-    fill: $color-1-l;
+    fill: $lighter;
     stroke: none;
   }
 
   .text-low-sub {
     font-size: 15px;
-    fill: $color-1-d;
+    fill: $darker;
     stroke: none;
   }
 }

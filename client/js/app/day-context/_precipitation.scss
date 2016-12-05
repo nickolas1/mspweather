@@ -1,0 +1,9 @@
+.precipitation {
+  $main: $color-3;
+  $lighter: $color-3-l;
+  $lightest: $color-3-ll;
+  $darker: $color-3-d;
+  $darkest: $color-3-dd;
+  
+  @include plot-base-style($lightest, $lighter, $main, $darker, $darkest);
+}

@@ -4900,11 +4900,11 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .hidden-print {
     display: none !important; } }
 
-high-low-distribution h3 {
-  background: #AA7C39;
+high-low-distribution h4 {
+  background: #EDC487;
   margin: 0;
-  padding: 5px 0 0 10px;
-  color: #FFEBCE; }
+  padding: 5px 0 5px 10px;
+  color: #231500; }
 
 high-low-distribution svg {
   display: block; }
@@ -4915,6 +4915,27 @@ high-low-distribution .plot-background {
 high-low-distribution .line {
   fill: none;
   stroke-width: 3.5px; }
+
+high-low-distribution .observation {
+  stroke-width: 1.5px;
+  stroke: #FFEBCE; }
+
+high-low-distribution .dot {
+  stroke: #FFEBCE;
+  fill: #FFEBCE; }
+
+high-low-distribution .kde {
+  stroke: #EDC487; }
+
+high-low-distribution .text-main {
+  font-size: 30px;
+  fill: #FFEBCE;
+  stroke: none; }
+
+high-low-distribution .text-sub {
+  font-size: 15px;
+  fill: #EDC487;
+  stroke: none; }
 
 high-low-distribution .high {
   stroke-width: 1.5px;
@@ -4958,113 +4979,113 @@ high-low-distribution .text-low-sub {
   fill: #67410A;
   stroke: none; }
 
-precipitation h3 {
-  background: #256F5C;
+.precipitation h4 {
+  background: #589A8A;
   margin: 0;
-  padding: 5px 0 0 10px;
-  color: #B0DAD0; }
+  padding: 5px 0 5px 10px;
+  color: #001711; }
 
-precipitation svg {
+.precipitation svg {
   display: block; }
 
-precipitation .plot-background {
+.precipitation .plot-background {
   fill: #256F5C; }
 
-precipitation .line {
+.precipitation .line {
   fill: none;
   stroke-width: 3.5px; }
 
-precipitation .observation {
+.precipitation .observation {
   stroke-width: 1.5px;
   stroke: #B0DAD0; }
 
-precipitation .dot {
+.precipitation .dot {
   stroke: #B0DAD0;
   fill: #B0DAD0; }
 
-precipitation .kde {
+.precipitation .kde {
   stroke: #589A8A; }
 
-precipitation .text-main {
+.precipitation .text-main {
   font-size: 30px;
   fill: #B0DAD0;
   stroke: none; }
 
-precipitation .text-sub {
+.precipitation .text-sub {
   font-size: 15px;
   fill: #589A8A;
   stroke: none; }
 
-snowfall h3 {
-  background: #2A4D6E;
+.snowfall h4 {
+  background: #5D7C9A;
   margin: 0;
-  padding: 5px 0 0 10px;
-  color: #B3C7DA; }
+  padding: 5px 0 5px 10px;
+  color: #010C17; }
 
-snowfall svg {
+.snowfall svg {
   display: block; }
 
-snowfall .plot-background {
+.snowfall .plot-background {
   fill: #2A4D6E; }
 
-snowfall .line {
+.snowfall .line {
   fill: none;
   stroke-width: 3.5px; }
 
-snowfall .observation {
+.snowfall .observation {
   stroke-width: 1.5px;
   stroke: #B3C7DA; }
 
-snowfall .dot {
+.snowfall .dot {
   stroke: #B3C7DA;
   fill: #B3C7DA; }
 
-snowfall .kde {
+.snowfall .kde {
   stroke: #5D7C9A; }
 
-snowfall .text-main {
+.snowfall .text-main {
   font-size: 30px;
   fill: #B3C7DA;
   stroke: none; }
 
-snowfall .text-sub {
+.snowfall .text-sub {
   font-size: 15px;
   fill: #5D7C9A;
   stroke: none; }
 
-snowdepth h3 {
-  background: #333577;
+.snowdepth h4 {
+  background: #696AA6;
   margin: 0;
-  padding: 5px 0 0 10px;
-  color: #BBBCDF; }
+  padding: 5px 0 5px 10px;
+  color: #020318; }
 
-snowdepth svg {
+.snowdepth svg {
   display: block; }
 
-snowdepth .plot-background {
+.snowdepth .plot-background {
   fill: #333577; }
 
-snowdepth .line {
+.snowdepth .line {
   fill: none;
   stroke-width: 3.5px; }
 
-snowdepth .observation {
+.snowdepth .observation {
   stroke-width: 1.5px;
   stroke: #BBBCDF; }
 
-snowdepth .dot {
+.snowdepth .dot {
   stroke: #BBBCDF;
   fill: #BBBCDF; }
 
-snowdepth .kde {
+.snowdepth .kde {
   stroke: #696AA6; }
 
-snowdepth .text-main {
+.snowdepth .text-main {
   font-size: 30px;
   fill: #BBBCDF;
   stroke: none; }
 
-snowdepth .text-sub {
+.snowdepth .text-sub {
   font-size: 15px;
   fill: #696AA6;
   stroke: none; }

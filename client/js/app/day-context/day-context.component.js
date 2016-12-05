@@ -13,17 +13,23 @@ import { ObservationService }   from '../observation.service';
         <high-low-distribution class='col-sm-6'
           [observation]='observation'
           [historical]='historical'></high-low-distribution>
-        <precipitation class='col-sm-6'
-          [observation]='observation'
-          [historical]='historical'></precipitation>
+        <inches-plot class='col-sm-6 precipitation'
+          title='precipitation'
+          traceReplacement=0.001
+          [observation]='observation.precip'
+          [historical]='historical.precip'></inches-plot>
       </div>
       <div class='row'>
-        <snowfall class='col-sm-6'
-          [observation]='observation'
-          [historical]='historical'></snowfall>
-        <snowdepth class='col-sm-6'
-          [observation]='observation'
-          [historical]='historical'></snowdepth>
+        <inches-plot class='col-sm-6 snowfall'
+          title='snowfall'
+          traceReplacement=0.01
+          [observation]='observation.snowfall'
+          [historical]='historical.snowfall'></inches-plot>
+        <inches-plot class='col-sm-6 snowdepth'
+          title='snowdepth'
+          traceReplacement=0.01
+          [observation]='observation.snowdepth'
+          [historical]='historical.snowdepth'></inches-plot>
       </div>
     `,
     providers:[ObservationService]
