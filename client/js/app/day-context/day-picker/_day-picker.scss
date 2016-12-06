@@ -1,0 +1,53 @@
+day-picker {
+  color: $color-1-dd;
+
+  .dropdown-menu {
+    max-height: 300px;
+    overflow: auto;
+  }
+
+  .date-display-wrapper {
+    text-align: center;
+  }
+
+  .date-display {
+    font-size: 1.5rem;
+
+    cursor: pointer;
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+    }
+    &:active {
+      opacity: 0.7;
+    }
+
+    border-bottom: 1px dotted $color-1;
+    &:after {
+      content: none !important;
+    }
+  }
+
+  .date-zoomer {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+
+    &>span {
+      padding: 10px;
+
+      cursor: pointer;
+      opacity: 0.8;
+      &:hover {
+        opacity: 1;
+        font-weight: bolder;
+      }
+      &:active {
+        opacity: 0.7;
+      }
+    }
+
+    &.date-zoomer-plus {
+      text-align: right;
+    }
+  }
+}
