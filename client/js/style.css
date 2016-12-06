@@ -264,8 +264,8 @@ body {
   font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1rem;
   line-height: 1.5;
-  color: #373a3c;
-  background-color: #fff; }
+  color: #231400;
+  background-color: #fbf3e9; }
 
 [tabindex="-1"]:focus {
   outline: none !important; }
@@ -533,7 +533,7 @@ dl.row > dd + dt {
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #fff;
+  background-color: #fbf3e9;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   transition: all .2s ease-in-out;
@@ -1304,7 +1304,7 @@ pre {
   .table tbody + tbody {
     border-top: 2px solid #eceeef; }
   .table .table {
-    background-color: #fff; }
+    background-color: #fbf3e9; }
 
 .table-sm th,
 .table-sm td {
@@ -2184,7 +2184,7 @@ tbody.collapse.in {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #373a3c;
+  color: #231400;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -2718,7 +2718,7 @@ tbody.collapse.in {
   .nav-tabs .nav-item.open .nav-link:focus,
   .nav-tabs .nav-item.open .nav-link:hover {
     color: #55595c;
-    background-color: #fff;
+    background-color: #fbf3e9;
     border-color: #ddd #ddd transparent; }
   .nav-tabs .dropdown-menu {
     margin-top: -1px;
@@ -4900,17 +4900,50 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .hidden-print {
     display: none !important; } }
 
+day-picker {
+  color: #231400; }
+  day-picker .dropdown-menu {
+    max-height: 300px;
+    overflow: auto; }
+  day-picker .date-display-wrapper {
+    text-align: center; }
+  day-picker .date-display {
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.8;
+    border-bottom: 1px dotted #AF7E39; }
+    day-picker .date-display:hover {
+      opacity: 1; }
+    day-picker .date-display:active {
+      opacity: 0.7; }
+    day-picker .date-display:after {
+      content: none !important; }
+  day-picker .date-zoomer {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem; }
+    day-picker .date-zoomer > span {
+      padding: 10px;
+      cursor: pointer;
+      opacity: 0.8; }
+      day-picker .date-zoomer > span:hover {
+        opacity: 1;
+        font-weight: bolder; }
+      day-picker .date-zoomer > span:active {
+        opacity: 0.7; }
+    day-picker .date-zoomer.date-zoomer-plus {
+      text-align: right; }
+
 high-low-distribution h4 {
-  background: #EDC487;
+  background: #FFD190;
   margin: 0;
   padding: 5px 0 5px 10px;
-  color: #231500; }
+  color: #68430E; }
 
 high-low-distribution svg {
   display: block; }
 
 high-low-distribution .plot-background {
-  fill: #AA7C39; }
+  fill: #AF7E39; }
 
 high-low-distribution .line {
   fill: none;
@@ -4918,78 +4951,78 @@ high-low-distribution .line {
 
 high-low-distribution .observation {
   stroke-width: 1.5px;
-  stroke: #FFEBCE; }
+  stroke: #FFE5C1; }
 
 high-low-distribution .dot {
-  stroke: #FFEBCE;
-  fill: #FFEBCE; }
+  stroke: #FFE5C1;
+  fill: #FFE5C1; }
 
 high-low-distribution .kde {
-  stroke: #EDC487; }
+  stroke: #FFD190; }
 
 high-low-distribution .text-main {
   font-size: 30px;
-  fill: #FFEBCE;
+  fill: #FFE5C1;
   stroke: none; }
 
 high-low-distribution .text-sub {
   font-size: 15px;
-  fill: #EDC487;
+  fill: #FFD190;
   stroke: none; }
 
 high-low-distribution .high {
   stroke-width: 1.5px;
-  stroke: #FFEBCE; }
+  stroke: #FFE5C1; }
 
 high-low-distribution .low {
   stroke-width: 1.5px;
-  stroke: #231500; }
+  stroke: #231400; }
 
 high-low-distribution .dot-high {
-  stroke: #FFEBCE;
-  fill: #FFEBCE; }
+  stroke: #FFE5C1;
+  fill: #FFE5C1; }
 
 high-low-distribution .dot-low {
-  stroke: #231500;
-  fill: #231500; }
+  stroke: #231400;
+  fill: #231400; }
 
 high-low-distribution .kde-high {
-  stroke: #EDC487; }
+  stroke: #FFD190; }
 
 high-low-distribution .kde-low {
-  stroke: #67410A; }
+  stroke: #68430E; }
 
 high-low-distribution .text-high-main {
   font-size: 30px;
-  fill: #FFEBCE;
+  fill: #FFE5C1;
   stroke: none; }
 
 high-low-distribution .text-low-main {
   font-size: 30px;
-  fill: #231500;
+  fill: #231400;
   stroke: none; }
 
 high-low-distribution .text-high-sub {
   font-size: 15px;
-  fill: #EDC487;
+  fill: #FFD190;
   stroke: none; }
 
 high-low-distribution .text-low-sub {
   font-size: 15px;
-  fill: #67410A;
+  fill: #68430E;
   stroke: none; }
 
 .precipitation h4 {
-  background: #589A8A;
+  background: #5E99A4;
   margin: 0;
   padding: 5px 0 5px 10px;
-  color: #001711; }
+  color: #0A3840; }
 
 .precipitation svg {
   display: block; }
 
 .precipitation .plot-background {
-  fill: #256F5C; }
+  fill: #25616C; }
 
 .precipitation .line {
   fill: none;
@@ -4997,36 +5030,36 @@ high-low-distribution .text-low-sub {
 
 .precipitation .observation {
   stroke-width: 1.5px;
-  stroke: #B0DAD0; }
+  stroke: #B3E2EB; }
 
 .precipitation .dot {
-  stroke: #B0DAD0;
-  fill: #B0DAD0; }
+  stroke: #B3E2EB;
+  fill: #B3E2EB; }
 
 .precipitation .kde {
-  stroke: #589A8A; }
+  stroke: #5E99A4; }
 
 .precipitation .text-main {
   font-size: 30px;
-  fill: #B0DAD0;
+  fill: #B3E2EB;
   stroke: none; }
 
 .precipitation .text-sub {
   font-size: 15px;
-  fill: #589A8A;
+  fill: #5E99A4;
   stroke: none; }
 
 .snowfall h4 {
-  background: #5D7C9A;
+  background: #668AAB;
   margin: 0;
   padding: 5px 0 5px 10px;
-  color: #010C17; }
+  color: #0D2A43; }
 
 .snowfall svg {
   display: block; }
 
 .snowfall .plot-background {
-  fill: #2A4D6E; }
+  fill: #2A5072; }
 
 .snowfall .line {
   fill: none;
@@ -5034,36 +5067,36 @@ high-low-distribution .text-low-sub {
 
 .snowfall .observation {
   stroke-width: 1.5px;
-  stroke: #B3C7DA; }
+  stroke: #B7D3EC; }
 
 .snowfall .dot {
-  stroke: #B3C7DA;
-  fill: #B3C7DA; }
+  stroke: #B7D3EC;
+  fill: #B7D3EC; }
 
 .snowfall .kde {
-  stroke: #5D7C9A; }
+  stroke: #668AAB; }
 
 .snowfall .text-main {
   font-size: 30px;
-  fill: #B3C7DA;
+  fill: #B7D3EC;
   stroke: none; }
 
 .snowfall .text-sub {
   font-size: 15px;
-  fill: #5D7C9A;
+  fill: #668AAB;
   stroke: none; }
 
 .snowdepth h4 {
-  background: #696AA6;
+  background: #6B81B0;
   margin: 0;
   padding: 5px 0 5px 10px;
-  color: #020318; }
+  color: #0F2146; }
 
 .snowdepth svg {
   display: block; }
 
 .snowdepth .plot-background {
-  fill: #333577; }
+  fill: #2E4575; }
 
 .snowdepth .line {
   fill: none;
@@ -5071,21 +5104,21 @@ high-low-distribution .text-low-sub {
 
 .snowdepth .observation {
   stroke-width: 1.5px;
-  stroke: #BBBCDF; }
+  stroke: #B9CAEE; }
 
 .snowdepth .dot {
-  stroke: #BBBCDF;
-  fill: #BBBCDF; }
+  stroke: #B9CAEE;
+  fill: #B9CAEE; }
 
 .snowdepth .kde {
-  stroke: #696AA6; }
+  stroke: #6B81B0; }
 
 .snowdepth .text-main {
   font-size: 30px;
-  fill: #BBBCDF;
+  fill: #B9CAEE;
   stroke: none; }
 
 .snowdepth .text-sub {
   font-size: 15px;
-  fill: #696AA6;
+  fill: #6B81B0;
   stroke: none; }

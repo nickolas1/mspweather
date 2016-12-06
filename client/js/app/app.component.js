@@ -4,7 +4,7 @@ import { Component }            from '@angular/core';
     selector: 'app',
     //templateUrl: 'templates/app-component'
     template: `
-      <div class='container'>
+      <div class='container-fluid'>
         <day-context></day-context>
       </div>
     `

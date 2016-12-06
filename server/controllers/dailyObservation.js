@@ -16,7 +16,6 @@ let controller = {
       if (err) {
         return res.send(err);
       }
-      console.log(observation)
       return res.json(observation[0]);
     });
   },
@@ -42,7 +41,6 @@ let controller = {
         observations: observations
       };
       observations.forEach(o => {
-        console.log(o.date,o.low,+o.low)
         if (o.high !== 'M') response.highs.push(+o.high);
         if (o.low !== 'M') response.lows.push(+o.low);
         if (o.precip !== 'M') response.precip.push(o.precip === 'T' ? TRACE_PRECIP : +o.precip);

@@ -6,7 +6,10 @@ import { D3Service, D3, Selection, ScaleLinear } from 'd3-ng2-service';
     template: `
       <h4>-{{title}}-</h4>
       <svg></svg>
-    `
+    `,
+    host: {
+      '(window:resize)': 'renderPlot($event)'
+    }
 })
 
 
@@ -46,7 +49,6 @@ export class InchesPlotComponent {
 
     // TODO be clever about label positions and plot margins etc.
     if (this.parentNativeElement !== null && this.observation && this.historical) {
-      console.log(this)
       const hist = this.historical.sort((a, b)=> a - b);
       const obs = this.observation=== 'T' ? this.traceReplacement : +this.observation
       const obsText = this.observation === 'T' ? 'trace' : obs + '"';

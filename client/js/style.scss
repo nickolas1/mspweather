@@ -1,7 +1,4 @@
-//@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
-@import './_variables'; //bootstrap overrides
-@import '../../node_modules/bootstrap/scss/bootstrap';
-
+////// option 1
 $color-1: #AA7C39;	// Main Primary color */
 $color-1-ll: #FFEBCE;
 $color-1-l: #EDC487;
@@ -26,5 +23,58 @@ $color-4-l: #5D7C9A;
 $color-4-d: #0B2743;
 $color-4-dd: #010C17;
 
+////// option 2
+$color-1: #B97F3D;	// Main Primary color */
+$color-1-ll: #FFD6A6;
+$color-1-l: #E8AF6E;
+$color-1-d: #8B5517;
+$color-1-dd: #4C2900;
 
-@import './app/day-context/_day-context.scss';
+$color-2: #304C7B;	// Main Secondary color (1) */
+$color-2-ll: #859CC3;
+$color-2-l: #516C9A;
+$color-2-d: #17305C;
+$color-2-dd: #051632;
+
+$color-3: #277767;	// Main Secondary color (2) */
+$color-3-ll: #7CBFB2;
+$color-3-l: #469485;
+$color-3-d: #0F594A;
+$color-3-dd: #003127;
+
+$color-2: #2A5D75;	// Main Complement color */
+$color-2-ll: #7EA9BD;
+$color-2-l: #4A7B93;
+$color-2-d: #124158;
+$color-2-dd: #022130;
+
+$color-4: #2A5072;	// Main Primary color */
+$color-4-ll: #B7D3EC;
+$color-4-l: #668AAB;
+$color-4-d: #0D2A43;
+$color-4-dd: #010C16;
+
+$color-2: #2E4575;	// Main Secondary color (1) */
+$color-2-ll: #B9CAEE;
+$color-2-l: #6B81B0;
+$color-2-d: #0F2146;
+$color-2-dd: #020917;
+
+$color-3: #25616C;	// Main Secondary color (2) */
+$color-3-ll: #B3E2EB;
+$color-3-l: #5E99A4;
+$color-3-d: #0A3840;
+$color-3-dd: #001215;
+
+$color-1: #AF7E39;	// Main Complement color */
+$color-1-ll: #FFE5C1;
+$color-1-l: #FFD190;
+$color-1-d: #68430E;
+$color-1-dd: #231400;
+//1: temp, 2:depth,  3:precip, 4:fall
+
+//@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import './_variables'; //bootstrap overrides
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+@import './app/day-context/_day-context';

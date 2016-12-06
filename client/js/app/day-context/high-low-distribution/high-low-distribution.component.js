@@ -6,7 +6,10 @@ import { D3Service, D3, Selection, ScaleLinear } from 'd3-ng2-service';
     template: `
       <h4>-high and low temp-</h4>
       <svg></svg>
-    `
+    `,
+    host: {
+      '(window:resize)': 'renderPlot($event)'
+    }
 })
 
 
