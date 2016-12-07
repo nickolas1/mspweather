@@ -2,7 +2,7 @@ day-picker {
   color: $color-1-dd;
 
   .dropdown-menu {
-    max-height: 300px;
+    max-height: 350px;
     overflow: auto;
   }
 
@@ -32,9 +32,34 @@ day-picker {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
 
-    &>span {
-      padding: 10px;
+    &.date-zoomer-minus {
+      &>div {
+        text-align: right;
+        &:hover:before {
+          content: '<<';
+        }
+      }
+    }
 
+    &.date-zoomer-plus {
+      &>div {
+        text-align: left;
+        &:hover:after {
+          content: '>>';
+        }
+      }
+    }
+
+    &>div {
+      width: 40px;
+      display: inline-block;
+    }
+
+    &>span {
+      padding: 0 12px;
+    }
+
+    &>div, &>span {
       cursor: pointer;
       opacity: 0.8;
       &:hover {
@@ -44,10 +69,6 @@ day-picker {
       &:active {
         opacity: 0.7;
       }
-    }
-
-    &.date-zoomer-plus {
-      text-align: right;
     }
   }
 }

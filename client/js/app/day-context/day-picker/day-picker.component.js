@@ -6,9 +6,9 @@ import { NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
     template: `
       <div class='row'>
         <div class='col-sm-3 hidden-xs-down date-zoomer date-zoomer-minus'>
-          <span (click)='bumpDate(-1, "y")'>-y</span>
-          <span (click)='bumpDate(-1, "M")'>m</span>
-          <span (click)='bumpDate(-1, "d")'>d</span>
+          <div (click)='bumpDate(-1, "y")'>y</div>
+          <div (click)='bumpDate(-1, "M")'>m</div>
+          <div (click)='bumpDate(-1, "d")'>d</div>
         </div>
         <div class='col-sm-6 col-xs-12 date-display-wrapper'>
           <span ngbDropdown>
@@ -36,22 +36,22 @@ import { NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
           </span>
         </div>
         <div class='col-sm-3 hidden-xs-down date-zoomer date-zoomer-plus'>
-          <span (click)='bumpDate(1, "d")'>+d</span>
-          <span (click)='bumpDate(1, "M")'>m</span>
-          <span (click)='bumpDate(1, "y")'>y</span>
+          <div (click)='bumpDate(1, "d")'>d</div>
+          <div (click)='bumpDate(1, "M")'>m</div>
+          <div (click)='bumpDate(1, "y")'>y</div>
         </div>
       </div>
 
       <div class='row hidden-sm-up'>
-        <div class='col-xs-6 date-zoomer date-zoomer-minus'>
-          <span (click)='bumpDate(-1, "y")'>-y</span>
+        <div class='col-xs-6 date-zoomer date-zoomer-xs'>
+          <span (click)='bumpDate(-1, "y")'><< y</span>
           <span (click)='bumpDate(-1, "M")'>m</span>
           <span (click)='bumpDate(-1, "d")'>d</span>
         </div>
-        <div class='col-xs-6 date-zoomer date-zoomer-plus'>
-          <span (click)='bumpDate(1, "d")'>+d</span>
+        <div class='col-xs-6 date-zoomer date-zoomer-xs'>
+          <span (click)='bumpDate(1, "d")'>d</span>
           <span (click)='bumpDate(1, "M")'>m</span>
-          <span (click)='bumpDate(1, "y")'>y</span>
+          <span (click)='bumpDate(1, "y")'>y >></span>
         </div>
       </div>
     `
