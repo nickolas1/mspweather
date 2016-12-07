@@ -60,6 +60,8 @@ import { NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
 export class DayPickerComponent {
   ngOnInit() {
     this.date = new Date(Date.UTC(1984, 11, 25));
+    this.today = moment.utc(moment().format('YYYY-MM-DD'));
+    this.firstEverDay = moment.utc('1873-01-01');
     this.month = {
       possibles: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       val: moment(this.date).utc().format('MMMM')
@@ -77,20 +79,15 @@ export class DayPickerComponent {
   }
 
   selectMonth(m) {
-    this.month.val = m;
-    this.setDayPossibilities();
-    this.selectDate();
+    this.checkBoundsAndSetDate(this.getUTCDateFromYMD(this.year.val, m, this.day.val));
   }
   selectDay(d) {
-    this.day.val = d;
-    this.day.disp = moment(this.year.val + '-' + this.month.val + '-' + this.day.val, 'YYYY-MMMM-D').utc().format('Do');
-    this.selectDate();
+    this.checkBoundsAndSetDate(this.getUTCDateFromYMD(this.year.val, this.month.val, d));
   }
   selectYear(y) {
-    this.year.val = y;
-    this.setDayPossibilities();
-    this.selectDate();
+    this.checkBoundsAndSetDate(this.getUTCDateFromYMD(y, this.month.val, this.day.val));
   }
+
   setDayPossibilities() {
     const min = 1;
     const max = moment(this.year.val + '-' + this.month.val, 'YYYY-MMMM').daysInMonth();
@@ -110,22 +107,36 @@ export class DayPickerComponent {
     return years;
   }
 
+  // adjust the date from the increment / decrement buttons
   bumpDate(direction, quantity) {
-    let d = this.getUTCDateFromInputs();
-    d.add(direction, quantity);
-    this.year.val = d.format('YYYY');
-    this.month.val = d.format('MMMM');
-    this.day.val = d.format('D');
+    let date = this.getUTCDateFromInputs();
+    date.add(direction, quantity);
+    if (date.isAfter(this.today)) date = this.today.clone();
+    this.checkBoundsAndSetDate(date);
+  }
+
+  // ensure requested date is between today and the start of data
+  checkBoundsAndSetDate(date) {
+    if (date.isAfter(this.today)) date = this.today.clone();
+    if (date.isBefore(this.firstEverDay)) date = this.firstEverDay.clone();
+    this.year.val = date.format('YYYY');
+    this.month.val = date.format('MMMM');
+    this.day.val = date.format('D');
     this.setDayPossibilities();
     this.selectDate();
   }
 
   getUTCDateFromInputs() {
-    return moment(this.year.val + '-' + this.month.val + '-' + this.day.val, 'YYYY-MMMM-D').utc();
+    return this.getUTCDateFromYMD(this.year.val, this.month.val, this.day.val);
+  }
+
+  getUTCDateFromYMD(y, m, d) {
+    return moment.utc(y + '-' + m + '-' + d, 'YYYY-MMMM-D');
   }
 
   @Output() onDateSelected = new EventEmitter();
 
+  // broadcast the date to the parent component
   selectDate() {
     let date = this.getUTCDateFromInputs();
     console.log('day picker shouts ', date.toDate());
