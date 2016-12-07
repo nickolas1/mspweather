@@ -5,12 +5,12 @@ import { NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
     selector: 'day-picker',
     template: `
       <div class='row'>
-        <div class='col-xs-2 date-zoomer date-zoomer-minus'>
+        <div class='col-sm-3 hidden-xs-down date-zoomer date-zoomer-minus'>
           <span (click)='bumpDate(-1, "y")'>-y</span>
           <span (click)='bumpDate(-1, "M")'>m</span>
           <span (click)='bumpDate(-1, "d")'>d</span>
         </div>
-        <div class='col-xs-8 date-display-wrapper'>
+        <div class='col-sm-6 col-xs-12 date-display-wrapper'>
           <span ngbDropdown>
             <span ngbDropdownToggle class='date-display'>{{month.val}}</span>
             <div class='dropdown-menu'>
@@ -35,7 +35,20 @@ import { NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
             </div>
           </span>
         </div>
-        <div class='col-xs-2 date-zoomer date-zoomer-plus'>
+        <div class='col-sm-3 hidden-xs-down date-zoomer date-zoomer-plus'>
+          <span (click)='bumpDate(1, "d")'>+d</span>
+          <span (click)='bumpDate(1, "M")'>m</span>
+          <span (click)='bumpDate(1, "y")'>y</span>
+        </div>
+      </div>
+
+      <div class='row hidden-sm-up'>
+        <div class='col-xs-6 date-zoomer date-zoomer-minus'>
+          <span (click)='bumpDate(-1, "y")'>-y</span>
+          <span (click)='bumpDate(-1, "M")'>m</span>
+          <span (click)='bumpDate(-1, "d")'>d</span>
+        </div>
+        <div class='col-xs-6 date-zoomer date-zoomer-plus'>
           <span (click)='bumpDate(1, "d")'>+d</span>
           <span (click)='bumpDate(1, "M")'>m</span>
           <span (click)='bumpDate(1, "y")'>y</span>

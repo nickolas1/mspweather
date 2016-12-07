@@ -56,9 +56,10 @@ export class InchesPlotComponent {
       this.clearPlot();
       // set up plot svg elements
       d3ParentElement = d3.select(this.parentNativeElement);
+      const elWidth = this.parentNativeElement.getBoundingClientRect().width;
       const margin = {top: 15, bottom: 30, left: 20, right: 20};
-      const width = d3ParentElement._groups[0][0].clientWidth - margin.left - margin.right;
-      const height = d3ParentElement._groups[0][0].clientWidth * 0.6 - margin.top - margin.bottom;
+      const width = elWidth - margin.left - margin.right;
+      const height = elWidth * 0.6 - margin.top - margin.bottom;
       this.svg = d3ParentElement.select('svg')
           .attr('width', width + margin.left + margin.right)
           .attr('height', height + margin.top + margin.bottom)

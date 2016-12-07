@@ -10,22 +10,22 @@ import { ObservationService }   from '../observation.service';
           (onDateSelected)='onDateSelected($event)'></day-picker>
       </div>
       <div class='row'>
-        <high-low-distribution class='col-sm-6'
+        <high-low-distribution class='col-md-6'
           [observation]='observation'
           [historical]='historical'></high-low-distribution>
-        <inches-plot class='col-sm-6 precipitation'
+        <inches-plot class='col-md-6 precipitation'
           title='precipitation'
           traceReplacement=0.001
           [observation]='observation.precip'
           [historical]='historical.precip'></inches-plot>
       </div>
       <div class='row'>
-        <inches-plot class='col-sm-6 snowfall'
+        <inches-plot class='col-md-6 snowfall'
           title='snowfall'
           traceReplacement=0.01
           [observation]='observation.snowfall'
           [historical]='historical.snowfall'></inches-plot>
-        <inches-plot class='col-sm-6 snowdepth'
+        <inches-plot class='col-md-6 snowdepth'
           title='snowdepth'
           traceReplacement=0.01
           [observation]='observation.snowdepth'
