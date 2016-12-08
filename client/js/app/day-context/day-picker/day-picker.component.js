@@ -60,7 +60,7 @@ import { NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
 export class DayPickerComponent {
   ngOnInit() {
     this.date = new Date(Date.UTC(1984, 11, 25));
-    this.today = moment.utc(moment().format('YYYY-MM-DD'));
+    this.today = moment.utc(moment().format('YYYY-MM-DD')).subtract(1, 'day');
     this.firstEverDay = moment.utc('1873-01-01');
     this.month = {
       possibles: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

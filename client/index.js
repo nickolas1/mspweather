@@ -14,6 +14,7 @@ require('!!script!@angular/platform-browser/bundles/platform-browser.umd.js');
 require('!!script!@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js');
 
 require('!!script!moment/min/moment.min.js');
+require('!!script!moment-timezone/builds/moment-timezone-with-data.min.js');
 
 // Import boot, resolve imports/requires, and pass through Babel
 require('./js/main');
