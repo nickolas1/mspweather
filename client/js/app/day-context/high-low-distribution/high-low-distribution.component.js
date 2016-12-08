@@ -100,8 +100,8 @@ export class HighLowDistributionComponent {
           .attr('d', line);
 
       const bisector = d3.bisector(d => d[0]).left;
-      const idxH = bisector(distH, +this.observation.high);
-      const idxL = bisector(distL, +this.observation.low);
+      const idxH = d3.min([bisector(distH, +this.observation.high), distH.length - 1]);
+      const idxL = d3.min([bisector(distL, +this.observation.low), distL.length - 1]);
       const highLine = [
         [+this.observation.high, distH[idxH][1]],
         [+this.observation.high, maxY + rangePad / 2]

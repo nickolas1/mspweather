@@ -67,14 +67,13 @@ export class DayPickerComponent {
   ngOnInit() {
     this.lastAvailableDay = moment.utc(moment().format('YYYY-MM-DD')).subtract(1, 'day');
     this.firstEverDay = moment.utc('1873-01-01');
-    this.route.params.subscribe(params => {
-      const initialDay = moment.utc(params.y + '-' + params.m + '-' + params.d, 'YYYY-MM-DD');
-      this.setPickers(initialDay);
-    });
+    const params = this.route.snapshot.params;
+    const initialDay = moment.utc(params.y + '-' + params.m + '-' + params.d, 'YYYY-MM-DD');
+    console.log('route params: ',params);
+    this.setInitialPickers(initialDay.isValid() ? initialDay : this.lastAvailableDay);
   }
   
-  setPickers(initialDay) {
-    let date = initialDay.isValid() ? initialDay : this.lastAvailableDay;
+  setInitialPickers(date) {
     this.month = {
       possibles: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       val: date.format('MMMM')
