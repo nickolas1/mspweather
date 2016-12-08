@@ -5133,14 +5133,18 @@ day-picker {
   day-picker .date-zoomer {
     font-size: 0.9rem;
     padding: 0.5rem 1rem; }
-    day-picker .date-zoomer.date-zoomer-minus > div {
-      text-align: right; }
-      day-picker .date-zoomer.date-zoomer-minus > div:hover:before {
-        content: '<<'; }
-    day-picker .date-zoomer.date-zoomer-plus > div {
+    day-picker .date-zoomer.date-zoomer-minus {
       text-align: left; }
-      day-picker .date-zoomer.date-zoomer-plus > div:hover:after {
-        content: '>>'; }
+      day-picker .date-zoomer.date-zoomer-minus > div {
+        text-align: right; }
+        day-picker .date-zoomer.date-zoomer-minus > div:hover:before {
+          content: '<<'; }
+    day-picker .date-zoomer.date-zoomer-plus {
+      text-align: right; }
+      day-picker .date-zoomer.date-zoomer-plus > div {
+        text-align: left; }
+        day-picker .date-zoomer.date-zoomer-plus > div:hover:after {
+          content: '>>'; }
     day-picker .date-zoomer > div {
       width: 40px;
       display: inline-block; }

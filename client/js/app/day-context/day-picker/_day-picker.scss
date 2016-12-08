@@ -33,6 +33,7 @@ day-picker {
     padding: 0.5rem 1rem;
 
     &.date-zoomer-minus {
+      text-align: left;
       &>div {
         text-align: right;
         &:hover:before {
@@ -42,6 +43,7 @@ day-picker {
     }
 
     &.date-zoomer-plus {
+      text-align: right;
       &>div {
         text-align: left;
         &:hover:after {

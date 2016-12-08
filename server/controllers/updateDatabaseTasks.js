@@ -1,7 +1,5 @@
 import moment from 'moment';
 import request from 'request';
-import XMLHttpRequest from 'xmlhttprequest';
-import Test from '../models/test';
 import DailyObservation from '../models/dailyObservation';
 
 
@@ -46,13 +44,19 @@ let cronJobs = {
             let date = moment.utc(d[0]);
             let query = { date: date };
             let options = { upsert: true };
+            let year = date.getUTCFullYear();
+            let month = date.getUTCMonth() + 1;
+            let day = date.getUTCDate();
             let update = {
               date: date,
               high: d[1],
               low: d[2],
               precip: d[3],
               snowfall: d[4],
-              snowdepth: d[5]
+              snowdepth: d[5],
+              year: year,
+              month: month,
+              day: day
             };
             DailyObservation.update(query, update, options, (err, raw) => {
               if (err) console.log('mongo update error: ', err);
