@@ -5115,7 +5115,7 @@ a.text-gray-dark:hover {
 day-picker {
   color: #231400; }
   day-picker .dropdown-menu {
-    max-height: 350px;
+    max-height: 400px;
     overflow: auto; }
   day-picker .date-display-wrapper {
     text-align: center; }

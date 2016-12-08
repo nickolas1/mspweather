@@ -2,6 +2,7 @@
 import { NgModule }                       from '@angular/core';
 import { BrowserModule }                  from '@angular/platform-browser';
 import { HttpModule }                     from '@angular/http';
+import { RouterModule }                   from '@angular/router';
 
 import { D3Service }                      from 'd3-ng2-service';
 import { NgbModule }                      from '@ng-bootstrap/ng-bootstrap';
@@ -15,12 +16,18 @@ import { InchesPlotComponent }            from './day-context/inches-plot/inches
 
 import { ObservationService }             from './observation.service';
 
+const routes = [
+    { path: 'day/:y/:m/:d', component: DayContextComponent },
+    { path: '', component: DayContextComponent },
+    { path: '**', component: DayContextComponent }
+];
 
 @NgModule({
     imports: [
       BrowserModule,
       HttpModule,
-      NgbModule.forRoot()
+      NgbModule.forRoot(),
+      RouterModule.forRoot(routes)
     ],
     declarations: [
       AppComponent,

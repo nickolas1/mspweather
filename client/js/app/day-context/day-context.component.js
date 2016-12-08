@@ -1,6 +1,6 @@
-import { Component, OnInit }            from '@angular/core';
-import { ObservationService }   from '../observation.service';
-
+import { Component, OnInit }      from '@angular/core';
+import { ObservationService }     from '../observation.service';
+import { Router }                 from '@angular/router';
 
 @Component({
     selector: 'day-context',
@@ -19,13 +19,13 @@ import { ObservationService }   from '../observation.service';
           [observation]='observation.precip'
           [historical]='historical.precip'></inches-plot>
       </div>
-      <div class='row'>
-        <inches-plot class='col-md-6 snowfall'
+      <div class='row' *ngIf='isWinter'>
+        <inches-plot class='col-md-6 snowfall' *ngIf='isSnowfall'
           title='snowfall'
           traceReplacement=0.01
           [observation]='observation.snowfall'
           [historical]='historical.snowfall'></inches-plot>
-        <inches-plot class='col-md-6 snowdepth'
+        <inches-plot class='col-md-6 snowdepth' *ngIf='isSnowdepth'
           title='snowdepth'
           traceReplacement=0.01
           [observation]='observation.snowdepth'
@@ -38,14 +38,17 @@ import { ObservationService }   from '../observation.service';
 export class DayContextComponent {
   observation = {};
   historical = {};
+  isWinter = false;
 
-  constructor(observationService:ObservationService) {
+  constructor(observationService:ObservationService, router:Router) {
     this.observationService = observationService;
+    this.router = router;
   }
 
-  ngOnInit() {
-    this.onDateSelected(new Date(Date.UTC(2009, 2, 3)));
-  }
+  // ngOnInit() {
+  //   console.log(this.route)
+  //   //this.onDateSelected(new Date(Date.UTC(2009, 2, 3)));
+  // }
 
   // onDateSelected(date) {
   //   console.log('day context hears ', date);
@@ -58,6 +61,11 @@ export class DayContextComponent {
     this.observation = this.observationService.getSingleObservation(date)
                                               .then(resp => this.observation = resp);
     this.historical = this.observationService.getManyObservations(date)
-                                             .then(resp => this.historical = resp);
+                                             .then(resp => {
+                                               this.historical = resp;
+                                               this.isWinter = resp.isWinter;
+                                               this.isSnowfall = resp.isSnowfall;
+                                               this.isSnowdepth = resp.isSnowdepth;
+                                             });
   }
 }

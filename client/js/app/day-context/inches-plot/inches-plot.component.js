@@ -96,7 +96,7 @@ export class InchesPlotComponent {
           .attr('d', line);
 
       const bisector = d3.bisector(d => d[0]).left;
-      const idx = bisector(dist, obs);
+      const idx = d3.min([bisector(dist, obs), dist.length - 1]);
       const obsLine = [
         [obs, dist[idx][1]],
         [obs, maxY + rangePad / 2]
@@ -130,12 +130,13 @@ export class InchesPlotComponent {
           .attr('dy', '17px')
           .attr('class','text-sub')
           .text(minX + '"');
+      let maxLabel = maxX === +this.traceReplacement ? 'trace' : maxX + '"';
       svg.append('text')
           .attr('x', x(maxX))
           .attr('y', y(0))
           .attr('dy', '17px')
           .attr('class','text-sub')
-          .text(maxX + '"');
+          .text(maxLabel);
     }
 
     function kernelDensityEstimator(kernel, x) {

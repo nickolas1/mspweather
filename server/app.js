@@ -26,10 +26,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 // route config
-app.get('/', mainController.getIndex);
 app.get('/templates/:template', mainController.getTemplate);
 app.get('/observation/:year/:month/:day', dailyObservationController.getObservationByDate);
 app.get('/observations/:month/:day', dailyObservationController.getObservationsByDayAndMonth);
+app.get('*', mainController.getIndex); // pass all else to client to deal with
+
 
 // cron jobs to update db
 // at 5am, get yesterday's data
@@ -41,6 +42,7 @@ const updateYesterday = new cron.CronJob({
   start: true,
   timezone: 'America/Chicago'
 });
+updateDatabaseTasks.getMissingDailyObservations(); // check for new data at app launch as well
 
 // start app
 app.listen(app.get('port'), () => {

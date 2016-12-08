@@ -44,9 +44,9 @@ let cronJobs = {
             let date = moment.utc(d[0]);
             let query = { date: date };
             let options = { upsert: true };
-            let year = date.getUTCFullYear();
-            let month = date.getUTCMonth() + 1;
-            let day = date.getUTCDate();
+            let year = date.year();
+            let month = date.month() + 1;
+            let day = date.date();
             let update = {
               date: date,
               high: d[1],

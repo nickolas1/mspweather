@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
-import { NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
+import { Component, EventEmitter, Output, OnInit }  from '@angular/core';
+import { NgbDropdown, NgbDropdownToggle }           from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute }                   from '@angular/router';
 
 @Component({
     selector: 'day-picker',
@@ -58,24 +59,38 @@ import { NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class DayPickerComponent {
+  constructor(router:Router, route:ActivatedRoute) {
+    this.router = router;
+    this.route = route;
+  }
+  
   ngOnInit() {
-    this.date = new Date(Date.UTC(1984, 11, 25));
-    this.today = moment.utc(moment().format('YYYY-MM-DD')).subtract(1, 'day');
+    this.lastAvailableDay = moment.utc(moment().format('YYYY-MM-DD')).subtract(1, 'day');
     this.firstEverDay = moment.utc('1873-01-01');
+    this.route.params.subscribe(params => {
+      const initialDay = moment.utc(params.y + '-' + params.m + '-' + params.d, 'YYYY-MM-DD');
+      this.setPickers(initialDay);
+    });
+  }
+  
+  setPickers(initialDay) {
+    let date = initialDay.isValid() ? initialDay : this.lastAvailableDay;
     this.month = {
       possibles: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      val: moment(this.date).utc().format('MMMM')
+      val: date.format('MMMM')
     };
     this.year = {
       possibles: this.getYearPossibilities(),
-      val: moment(this.date).utc().format('YYYY')
+      val: date.format('YYYY')
     };
     this.day = {
       possibles: [],
-      val: moment(this.date).utc().format('D'),
-      disp: moment(this.date).utc().format('Do')
+      val: date.format('D'),
+      disp: date.format('Do')
     };
+    
     this.setDayPossibilities();
+    this.selectDate();
   }
 
   selectMonth(m) {
@@ -111,13 +126,13 @@ export class DayPickerComponent {
   bumpDate(direction, quantity) {
     let date = this.getUTCDateFromInputs();
     date.add(direction, quantity);
-    if (date.isAfter(this.today)) date = this.today.clone();
+    if (date.isAfter(this.lastAvailableDay)) date = this.lastAvailableDay.clone();
     this.checkBoundsAndSetDate(date);
   }
 
   // ensure requested date is between today and the start of data
   checkBoundsAndSetDate(date) {
-    if (date.isAfter(this.today)) date = this.today.clone();
+    if (date.isAfter(this.lastAvailableDay)) date = this.lastAvailableDay.clone();
     if (date.isBefore(this.firstEverDay)) date = this.firstEverDay.clone();
     this.year.val = date.format('YYYY');
     this.month.val = date.format('MMMM');
@@ -139,7 +154,9 @@ export class DayPickerComponent {
   // broadcast the date to the parent component
   selectDate() {
     let date = this.getUTCDateFromInputs();
-    console.log('day picker shouts ', date.toDate());
     this.onDateSelected.emit(date.toDate());
+    this.router.navigateByUrl('/day/' + date.format('YYYY') + '/' +
+                                        date.format('MM') + '/' +
+                                        date.format('DD'));
   }
 }

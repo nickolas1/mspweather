@@ -5,7 +5,7 @@ import { Component }            from '@angular/core';
     //templateUrl: 'templates/app-component'
     template: `
       <div class='container-fluid'>
-        <day-context></day-context>
+        <router-outlet></router-outlet>
       </div>
     `
 })

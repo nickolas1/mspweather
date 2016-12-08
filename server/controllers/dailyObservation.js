@@ -33,6 +33,9 @@ let controller = {
         return res.send(err);
       }
       let response = {
+        isWinter: false,
+        isSnowfall: false,
+        isSnowdepth: false,
         highs: [],
         lows: [],
         precip: [],
@@ -47,6 +50,13 @@ let controller = {
         if (o.snowfall !== 'M') response.snowfall.push(o.snowfall === 'T' ? TRACE_SNOW : +o.snowfall);
         if (o.snowdepth !== 'M') response.snowdepth.push(o.snowdepth === 'T' ? TRACE_SNOW : +o.snowdepth);
       });
+      let snowfallSum = response.snowfall.reduce( (a,b) => a+b, 0);
+      let snowdepthSum = response.snowdepth.reduce( (a,b) => a+b, 0);
+      // show winter distributions if 5 days have had a trace of snow
+      response.isSnowfall = snowfallSum > 5 * TRACE_SNOW;
+      response.isSnowdepth = snowdepthSum > 5 * TRACE_SNOW;
+      response.isWinter = response.isSnowfall || response.isSnowdepth;
+      console.log(snowfallSum, snowdepthSum, response.isWinter)
       return res.json(response)
     });
   }
