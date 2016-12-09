@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output, OnInit }  from '@angular/core';
+import { Component, EventEmitter, Output, OnInit,
+     trigger, state, style, transition, animate}  from '@angular/core';
 
 @Component({
     selector: 'footer-links',
@@ -17,7 +18,7 @@ import { Component, EventEmitter, Output, OnInit }  from '@angular/core';
           (click) = goEmail()></i>
       </span>
     </footer>
-    <div [ngbCollapse]='isWhatCollapsed' class='what-body'>
+    <div [@whatPanel]='whatPanelState' class='what-body'>
       <div class='container'>
         <div class='row'>
           <i class='fa fa-3x fa-times clickable pull-right'
@@ -29,10 +30,10 @@ import { Component, EventEmitter, Output, OnInit }  from '@angular/core';
         </blockquote>
         <p>
           As statistical descriptions go, the average is pretty boring! How weird
-          of a day is it? What's the distribution? This page shows you the High and
+          of a day is it? What's the distribution look like? This page shows you the High and
           Low temperatures and Precipitation recorded at the MSP weather station compared to the historical
-          distribution. That's cobbled together from MSP and nearby sources (St Paul) back to 1873.
-          The curves show a kernel density estimate of that distribution.
+          distribution, cobbled together from MSP and nearby sources back to 1873.
+          The curves show a kernel density estimate of that data.
         </p>
         <blockquote class='blockquote'>
         Bit of a difference in snow cover this year to last: we average 10" in November we've seen only 1.1!"
@@ -45,12 +46,25 @@ import { Component, EventEmitter, Output, OnInit }  from '@angular/core';
         </p>
       </div>
     </div>
-    `
+    `,
+    animations: [
+      trigger('whatPanel', [
+        state('hidden', style({
+          top: '100%'
+        })),
+        state('visible',   style({
+          top: 0
+        })),
+        transition('hidden => visible', animate('200ms ease-out')),
+        transition('visible => hidden', animate('200ms ease-in'))
+      ])
+    ]
 })
 
 export class FooterLinksComponent {
   ngOnInit() {
     this.isWhatCollapsed = true;
+    this.whatPanelState = 'hidden';
   }
 
   goGithub() {
@@ -69,6 +83,7 @@ export class FooterLinksComponent {
 
   toggleIsWhatCollapsed() {
     this.isWhatCollapsed = !this.isWhatCollapsed;
+    this.whatPanelState = this.isWhatCollapsed ? 'hidden' : 'visible';
     this.onWhatToggled.emit(this.isWhatCollapsed);
   }
 }

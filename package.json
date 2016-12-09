@@ -13,7 +13,7 @@
     "babel:w": "babel -w server --out-dir lib",
     "webpack": "webpack",
     "webpack:w": "webpack --watch",
-    "postinstall": "npm run babel && &&npm run css && npm run webpack",
+    "postinstall": "npm run babel && npm run css && npm run webpack",
     "start": "node lib/app"
   },
   "author": "",
