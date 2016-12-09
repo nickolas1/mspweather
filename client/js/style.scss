@@ -76,5 +76,6 @@ $color-1-dd: #231400;
 //@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 @import './_variables'; //bootstrap overrides
 @import '../../node_modules/bootstrap/scss/bootstrap';
+@import './app/footer-links/_footer-links';
 
 @import './app/day-context/_day-context';

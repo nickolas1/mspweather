@@ -1,0 +1,29 @@
+.clickable {
+  color: $color-1-dd;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.connectivity-wrapper {
+  margin-right: 1.5em;
+}
+
+.what-toggle {
+  margin-left: 0.5em;
+}
+
+.what-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: $color-1-ll;
+}

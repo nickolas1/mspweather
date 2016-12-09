@@ -13,8 +13,10 @@ import { DayContextComponent }            from './day-context/day-context.compon
 import { HighLowDistributionComponent }   from './day-context/high-low-distribution/high-low-distribution.component';
 import { DayPickerComponent }             from './day-context/day-picker/day-picker.component';
 import { InchesPlotComponent }            from './day-context/inches-plot/inches-plot.component';
+import { FooterLinksComponent }           from './footer-links/footer-links.component';
 
 import { ObservationService }             from './observation.service';
+import 'font-awesome-sass-loader';
 
 const routes = [
     { path: 'day/:y/:m/:d', component: DayContextComponent },
@@ -34,7 +36,8 @@ const routes = [
       DayContextComponent,
       HighLowDistributionComponent,
       DayPickerComponent,
-      InchesPlotComponent
+      InchesPlotComponent,
+      FooterLinksComponent
     ],
     providers: [
       ObservationService,
