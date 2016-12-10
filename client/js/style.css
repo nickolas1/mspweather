@@ -5139,6 +5139,9 @@ a.text-gray-dark:hover {
     border-left-color: #2A5072; }
     .what-body .blockquote > .blockquote-footer {
       color: #2A5072; }
+  @media (max-width: 575px) {
+    .what-body {
+      padding: 0 6px; } }
 
 day-picker {
   color: #231400; }

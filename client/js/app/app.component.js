@@ -5,7 +5,6 @@ import { Component, OnInit,
     selector: 'app',
     //templateUrl: 'templates/app-component'
     template: `
-      
         <div class='container-fluid'>
           <div [@hideContent]='showMainContent'>
             <router-outlet></router-outlet>
@@ -13,12 +12,11 @@ import { Component, OnInit,
           <footer-links
             (onWhatToggled)='onWhatToggled($event)'></footer-links>
         </div>
-      
     `,
     animations: [
       trigger('hideContent', [
         state('visible', style({
-          
+
         })),
         state('hidden',   style({
           display: 'none'

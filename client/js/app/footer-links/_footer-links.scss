@@ -26,12 +26,16 @@
   bottom: 0;
 
   background: $color-1-ll;
-  
+
   .blockquote {
     color: $color-4-d;
     border-left-color: $color-4;
     &>.blockquote-footer {
       color: $color-4;
     }
+  }
+
+  @media (max-width: 575px) {
+    padding: 0 6px;
   }
 }
