@@ -1,4 +1,6 @@
 import path from 'path'; // Join paths with the right type of slash
+import webpack from 'webpack';
+import CompressionPlugin from 'compression-webpack-plugin';
 
 let config = {
   entry: path.join(__dirname, 'client', 'index.js'),
@@ -28,7 +30,21 @@ let config = {
         loader: "file-loader"
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false
+      },
+    }),
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
+  ]
 };
 
 export default config;

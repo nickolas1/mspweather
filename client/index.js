@@ -15,6 +15,7 @@ require('!!script!@angular/platform-browser-dynamic/bundles/platform-browser-dyn
 
 require('!!script!moment/min/moment.min.js');
 require('!!script!moment-timezone/builds/moment-timezone-with-data.min.js');
+require('!!script!web-animations-js/web-animations.min.js');
 
 // Import boot, resolve imports/requires, and pass through Babel
 require('./js/main');

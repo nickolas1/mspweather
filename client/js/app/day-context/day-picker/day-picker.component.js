@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, OnInit }  from '@angular/core';
-import { NgbDropdown, NgbDropdownToggle }           from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdown, NgbDropdownToggle }           from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
 import { Router, ActivatedRoute }                   from '@angular/router';
 
 @Component({
@@ -63,7 +63,7 @@ export class DayPickerComponent {
     this.router = router;
     this.route = route;
   }
-  
+
   ngOnInit() {
     this.lastAvailableDay = moment.utc(moment().format('YYYY-MM-DD')).subtract(1, 'day');
     this.firstEverDay = moment.utc('1873-01-01');
@@ -72,7 +72,7 @@ export class DayPickerComponent {
     console.log('route params: ',params);
     this.setInitialPickers(initialDay.isValid() ? initialDay : this.lastAvailableDay);
   }
-  
+
   setInitialPickers(date) {
     this.month = {
       possibles: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -87,7 +87,7 @@ export class DayPickerComponent {
       val: date.format('D'),
       disp: date.format('Do')
     };
-    
+
     this.setDayPossibilities();
     this.selectDate();
   }

@@ -1,11 +1,13 @@
 // vendor
-import { NgModule }                       from '@angular/core';
+import { NgModule, enableProdMode }       from '@angular/core';
 import { BrowserModule }                  from '@angular/platform-browser';
 import { HttpModule }                     from '@angular/http';
 import { RouterModule }                   from '@angular/router';
 
-import { D3Service }                      from 'd3-ng2-service';
-import { NgbModule }                      from '@ng-bootstrap/ng-bootstrap';
+//import { D3Service }                      from 'd3-ng2-service';
+import { D3Service }                      from './d3-service/d3.service';
+//import { NgbModule }                      from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule }              from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
 
 // app
 import { AppComponent}                    from './app.component';
@@ -18,6 +20,8 @@ import { FooterLinksComponent }           from './footer-links/footer-links.comp
 import { ObservationService }             from './observation.service';
 import 'font-awesome-sass-loader';
 
+enableProdMode();
+
 const routes = [
     { path: 'day/:y/:m/:d', component: DayContextComponent },
     { path: '', component: DayContextComponent },
@@ -28,7 +32,7 @@ const routes = [
     imports: [
       BrowserModule,
       HttpModule,
-      NgbModule.forRoot(),
+      NgbDropdownModule.forRoot(),
       RouterModule.forRoot(routes)
     ],
     declarations: [

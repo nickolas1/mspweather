@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import path from 'path';
 import cron from 'cron';
+import compression from 'compression';
 
 import mainController from './controllers/main';
 import dailyObservationController from './controllers/dailyObservation';
@@ -18,6 +19,7 @@ mongoose.connection.on('error', () => {
 
 // app config
 let app = express();
+app.use(compression());
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, '..', 'views'));
 app.set('view engine', 'jade');

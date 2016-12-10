@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnChanges, OnDestroy, ElementRef } from '@angular/core';
-import { D3Service, D3, Selection, ScaleLinear } from 'd3-ng2-service';
+import { D3Service } from '../../d3-service/d3.service';
 
 @Component({
     selector: 'high-low-distribution',

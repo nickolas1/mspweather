@@ -4,7 +4,7 @@ import { Component, EventEmitter, Output, OnInit,
 @Component({
     selector: 'footer-links',
     template: `
-    <div class='container'>
+    <div class='container-fluid'>
       <footer class='footer'>
         <span class='what-wrapper'>
           <i class='fa fa-3x fa-question-circle clickable what-toggle'
