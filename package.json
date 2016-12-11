@@ -9,6 +9,7 @@
     "prebuild:css": "node-sass client/js/style.scss client/js/style.css",
     "css": "npm run prebuild:css && postcss --use autoprefixer -b 'last 2 versions' < client/js/style.css | postcss --use cssnano > client/js/style.min.css",
     "css:w": "nodemon -e scss -x \"npm run css\"",
+    "img": "cp -r client/img public/",
     "babel": "babel server --out-dir lib",
     "babel:w": "babel -w server --out-dir lib",
     "webpack": "webpack",

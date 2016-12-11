@@ -1974,6 +1974,15 @@ a.text-gray-dark:hover {
 
 day-picker {
   color: #231400; }
+  day-picker .logo {
+    cursor: pointer;
+    max-width: 100%;
+    height: 70px; }
+  @media (max-width: 576px) {
+    day-picker .logo {
+      height: 50px; } }
+  day-picker > .row {
+    padding: 7px 0; }
   day-picker .dropdown-menu {
     max-height: 400px;
     overflow: auto; }
@@ -1993,23 +2002,9 @@ day-picker {
   day-picker .date-zoomer {
     font-size: 0.9rem;
     padding: 0.5rem 1rem; }
-    day-picker .date-zoomer.date-zoomer-minus {
-      text-align: left; }
-      day-picker .date-zoomer.date-zoomer-minus > div {
-        text-align: right; }
-        day-picker .date-zoomer.date-zoomer-minus > div:hover:before {
-          content: '<<'; }
-    day-picker .date-zoomer.date-zoomer-plus {
-      text-align: right; }
-      day-picker .date-zoomer.date-zoomer-plus > div {
-        text-align: left; }
-        day-picker .date-zoomer.date-zoomer-plus > div:hover:after {
-          content: '>>'; }
     day-picker .date-zoomer > div {
       width: 40px;
       display: inline-block; }
-    day-picker .date-zoomer > span {
-      padding: 0 12px; }
     day-picker .date-zoomer > div, day-picker .date-zoomer > span {
       cursor: pointer;
       opacity: 0.8; }

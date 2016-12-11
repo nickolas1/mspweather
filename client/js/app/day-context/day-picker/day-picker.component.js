@@ -6,55 +6,50 @@ import { Router, ActivatedRoute }                   from '@angular/router';
     selector: 'day-picker',
     template: `
       <div class='row'>
-        <div class='col-sm-3 hidden-xs-down date-zoomer date-zoomer-minus'>
-          <div (click)='bumpDate(-1, "y")'>y</div>
-          <div (click)='bumpDate(-1, "M")'>m</div>
-          <div (click)='bumpDate(-1, "d")'>d</div>
+        <div class='col-md-6 text-xs-center'>
+          <img src='./img/logo-full.svg' class='logo' routerLink='/'>
         </div>
-        <div class='col-sm-6 col-xs-12 date-display-wrapper'>
-          <span ngbDropdown>
-            <span ngbDropdownToggle class='date-display'>{{month.val}}</span>
-            <div class='dropdown-menu'>
-              <button class='dropdown-item' *ngFor='let m of month.possibles'
-                (click)='selectMonth(m)'>{{m}}</button>
-            </div>
-          </span>
+        <div class='col-md-6'>
+          <div class='container-fluid'>
+            <div class='row date-display-wrapper'>
+              <span ngbDropdown>
+                <span ngbDropdownToggle class='date-display'>{{month.val}}</span>
+                <div class='dropdown-menu'>
+                  <button class='dropdown-item' *ngFor='let m of month.possibles'
+                    (click)='selectMonth(m)'>{{m}}</button>
+                </div>
+              </span>
 
-          <span ngbDropdown>
-            <span ngbDropdownToggle class='date-display'>{{day.disp}}</span>
-            <div class='dropdown-menu'>
-              <button class='dropdown-item' *ngFor='let d of day.possibles'
-                (click)='selectDay(d)'>{{d}}</button>
-            </div>
-          </span>
+              <span ngbDropdown>
+                <span ngbDropdownToggle class='date-display'>{{day.disp}}</span>
+                <div class='dropdown-menu'>
+                  <button class='dropdown-item' *ngFor='let d of day.possibles'
+                    (click)='selectDay(d)'>{{d}}</button>
+                </div>
+              </span>
 
-          <span ngbDropdown>
-            <span ngbDropdownToggle class='date-display'>{{year.val}}</span>
-            <div class='dropdown-menu'>
-              <button class='dropdown-item' *ngFor='let y of year.possibles'
-                (click)='selectYear(y)'>{{y}}</button>
+              <span ngbDropdown>
+                <span ngbDropdownToggle class='date-display'>{{year.val}}</span>
+                <div class='dropdown-menu'>
+                  <button class='dropdown-item' *ngFor='let y of year.possibles'
+                    (click)='selectYear(y)'>{{y}}</button>
+                </div>
+              </span>
             </div>
-          </span>
+            <div class='row'>
+              <div class='col-xs-6 date-zoomer text-xs-left date-zoomer-minus'>
+                <div class='text-xs-right' (click)='bumpDate(-1, "y")'><<y</div>
+                <div class='text-xs-right' (click)='bumpDate(-1, "M")'>m</div>
+                <div class='text-xs-right' (click)='bumpDate(-1, "d")'>d</div>
+              </div>
+              <div class='col-xs-6 date-zoomer text-xs-right date-zoomer-plus'>
+                <div class='text-xs-left' (click)='bumpDate(1, "d")'>d</div>
+                <div class='text-xs-left' (click)='bumpDate(1, "M")'>m</div>
+                <div class='text-xs-left' (click)='bumpDate(1, "y")'>y>></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class='col-sm-3 hidden-xs-down date-zoomer date-zoomer-plus'>
-          <div (click)='bumpDate(1, "d")'>d</div>
-          <div (click)='bumpDate(1, "M")'>m</div>
-          <div (click)='bumpDate(1, "y")'>y</div>
-        </div>
-      </div>
-
-      <div class='row hidden-sm-up'>
-        <div class='col-xs-6 date-zoomer date-zoomer-xs'>
-          <span (click)='bumpDate(-1, "y")'><< y</span>
-          <span (click)='bumpDate(-1, "M")'>m</span>
-          <span (click)='bumpDate(-1, "d")'>d</span>
-        </div>
-        <div class='col-xs-6 date-zoomer date-zoomer-xs'>
-          <span (click)='bumpDate(1, "d")'>d</span>
-          <span (click)='bumpDate(1, "M")'>m</span>
-          <span (click)='bumpDate(1, "y")'>y >></span>
-        </div>
-      </div>
     `
 })
 
