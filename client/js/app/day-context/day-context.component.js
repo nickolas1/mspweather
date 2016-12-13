@@ -59,13 +59,16 @@ export class DayContextComponent {
   onDateSelected(date) {
     console.log('day context hears ', date);
     this.observation = this.observationService.getSingleObservation(date)
-                                              .then(resp => this.observation = resp);
+                                              //.then(resp => this.observation = resp);
+                                              .subscribe(response => this.observation = response,
+                                                         error => console.log(error));
     this.historical = this.observationService.getManyObservations(date)
-                                             .then(resp => {
+                                             //.then(resp => {
+                                             .subscribe(resp => {
                                                this.historical = resp;
                                                this.isWinter = resp.isWinter;
                                                this.isSnowfall = resp.isSnowfall;
                                                this.isSnowdepth = resp.isSnowdepth;
-                                             });
+                                           }, error => console.log(error));
   }
 }

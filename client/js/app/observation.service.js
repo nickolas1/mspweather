@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/publishReplay';
+import 'rxjs/add/operator/map';
 
 const ONE_OBERVATION_URL_BASE = '/observation';
 const MANY_OBSERVATIONS_URL_BASE = '/observations';
@@ -18,11 +19,12 @@ export class ObservationService {
   constructor(http: Http) {
     this.http = http;
   }
-
+  
   genericGet(url) {
     return this.http.get(url)
-                    .toPromise()
-                    .then(response => response.json());
+                    .map(response => response.json())
+                    .publishReplay(1)
+                    .refCount();
   }
 
   getSingleObservation(date) {
