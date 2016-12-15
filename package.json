@@ -44,9 +44,8 @@
     "es6-shim": "^0.35.1",
     "express": "^4.14.0",
     "express-hateoas-links": "^1.0.5",
-    "file-loader": "^0.9.0",
     "font-awesome": "^4.7.0",
-    "font-awesome-sass-loader": "^1.0.2",
+    "font-awesome-sass-loader": "github:actra-gschuster/font-awesome-sass-loader#patch-1",
     "jade": "^1.11.0",
     "moment": "^2.17.1",
     "moment-timezone": "^0.5.10",
@@ -55,12 +54,8 @@
     "reflect-metadata": "^0.1.8",
     "request": "^2.79.0",
     "rxjs": "^5.0.0-rc.4",
-    "script-loader": "^0.7.0",
-    "style-loader": "^0.13.1",
     "systemjs": "^0.19.41",
-    "url-loader": "^0.5.7",
     "web-animations-js": "^2.2.2",
-    "webpack": "^1.13.3",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
@@ -72,10 +67,16 @@
     "babel-preset-stage-1": "^6.16.0",
     "compression-webpack-plugin": "^0.3.2",
     "cssnano": "^3.8.1",
+    "file-loader": "^0.9.0",
     "node-sass": "^3.13.0",
     "nodemon": "^1.11.0",
     "postcss": "^5.2.6",
-    "postcss-cli": "^2.6.0"
+    "postcss-cli": "^2.6.0",
+    "sass-loader": "^4.1.0",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.0-rc.0"
   },
   "description": ""
 }
