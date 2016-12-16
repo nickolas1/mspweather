@@ -32,10 +32,6 @@ let config = {
         loaders: ['style', 'css']
       },
       {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, // Use the file-loader for fonts
-        loader: 'file-loader'
-      },
-      {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "url-loader?limit=10000&mimetype=application/font-woff"
       },
