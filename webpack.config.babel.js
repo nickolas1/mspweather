@@ -9,20 +9,30 @@ let config = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/, // Transpile all .js files from ES6 to ES5
-        loaders: ['babel-loader']
+        loader: 'babel-loader',
+        query: {
+          babelrc: false,
+          presets: [
+            ['es2015', { modules: false }],
+            'stage-1'
+          ],
+          plugins: [
+            'angular2-annotations',
+            'transform-decorators-legacy',
+            'transform-class-properties',
+            'transform-flow-strip-types'
+          ]
+        }
       },
       {
         test: /\.css$/, // Use the style-loader for all .css files
         loaders: ['style', 'css']
       },
       {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, // Use the file-loader for fonts
-        loaders: ['file-loader']
-      },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "url-loader?limit=10000&mimetype=application/font-woff"
       },
       {
