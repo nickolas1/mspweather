@@ -95,7 +95,7 @@ $color-1-dd: #231400;
 // Core CSS
 @import "../../node_modules/bootstrap/scss/reboot";
 @import "../../node_modules/bootstrap/scss/type";
-//@import "images";
+@import "../../node_modules/bootstrap/scss/images";
 //@import "code";
 @import "../../node_modules/bootstrap/scss/grid";
 //@import "tables";

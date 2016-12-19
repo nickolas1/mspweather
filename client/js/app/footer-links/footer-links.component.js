@@ -45,6 +45,9 @@ import { Component, EventEmitter, Output, OnInit,
             date you're looking at has seen at least a few historical days recording trace amounts of snowfall or snow depth,
             those distributions are plotted too.
           </p>
+          <p>
+            <img src='./img/explainer.png' class='img-fluid mx-auto d-block'>
+          </p>
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@ export class HighLowDistributionComponent {
       }
       this.clearPlot();
       // set up plot svg elements
-      const margin = {top: 15, bottom: 30, left: 20, right: 20};
+      const margin = {top: 15, bottom: 30, left: 25, right: 25};
       const width = elWidth - margin.left - margin.right;
       const height = elWidth * 0.6 - margin.top - margin.bottom;
       this.svg = d3ParentElement.select('svg')
